@@ -1,0 +1,33 @@
+{
+  "name": "@etalab/cog",
+  "version": "0.0.0",
+  "description": "API JavaScript permettant d'interroger le Code Officiel Géographique",
+  "main": "index.js",
+  "repository": "git@github.com:etalab/code-officiel-geographique.git",
+  "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "node build",
+    "lint": "xo",
+    "test": "yarn lint",
+    "prepare": "yarn build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "csv-parser": "^1.12.1",
+    "decompress": "^4.2.0",
+    "get-stream": "^3.0.0",
+    "iconv-lite": "^0.4.19",
+    "pumpify": "^1.4.0",
+    "write-json-file": "^2.3.0",
+    "xo": "^0.20.3"
+  },
+  "xo": {
+    "semicolon": false,
+    "space": 2
+  },
+  "engines": {
+    "node": ">= 8"
+  }
+}
