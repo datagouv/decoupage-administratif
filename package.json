@@ -14,7 +14,7 @@
     "build": "node build",
     "lint": "xo",
     "test": "yarn lint",
-    "prepare": "yarn build"
+    "prepare": "rimraf data && yarn build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -23,6 +23,7 @@
     "get-stream": "^3.0.0",
     "iconv-lite": "^0.4.19",
     "pumpify": "^1.4.0",
+    "rimraf": "^2.6.2",
     "write-json-file": "^2.3.0",
     "xo": "^0.20.3"
   },
