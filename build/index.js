@@ -16,13 +16,13 @@ async function buildDepartements() {
 
 async function buildArrondissements() {
   const rows = await extractDataFromSource('arrond2018-txt.zip')
-  const data = rows.map(prepare.prepareRegion).filter(Boolean)
+  const data = rows.map(prepare.prepareArrondissement).filter(Boolean)
   await writeData('arrondissements', data)
 }
 
 async function buildCommunes() {
   const rows = await extractDataFromSource('France2018-txt.zip')
-  const data = rows.map(prepare.prepareRegion).filter(Boolean)
+  const data = rows.map(prepare.prepareCommune).filter(Boolean)
   await writeData('communes', data)
 }
 
