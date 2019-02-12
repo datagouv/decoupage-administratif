@@ -1,42 +1,36 @@
 /* eslint unicorn/no-process-exit: off */
-const {join} = require('path')
-const getStream = require('get-stream').array
-const parse = require('csv-parser')
-const decompress = require('decompress')
-const {decodeStream} = require('iconv-lite')
-const pumpify = require('pumpify').obj
-const writeJsonFile = require('write-json-file')
-
 const prepare = require('./prepare')
-const {bufferToStream} = require('./buffer-stream')
+const {writeData, extractDataFromSource} = require('./util')
 
-async function extractDataFromFile(path) {
-  const [file] = await decompress(path)
-  const stream = pumpify(
-    bufferToStream(file.data),
-    decodeStream('win1252'),
-    parse({separator: '\t', strict: true})
-  )
-  return getStream(stream)
+async function buildRegions() {
+  const rows = await extractDataFromSource('reg2018-txt.zip')
+  const regions = rows.map(prepare.prepareRegion).filter(Boolean)
+  await writeData('regions', regions)
 }
 
-function extractDataFromSource(fileName) {
-  return extractDataFromFile(join(__dirname, '..', 'sources', fileName))
+async function buildDepartements() {
+  const rows = await extractDataFromSource('depts2018-txt.zip')
+  const data = rows.map(prepare.prepareDepartement).filter(Boolean)
+  await writeData('departements', data)
 }
 
-const DATASETS = [
-  {name: 'regions', source: 'reg2018-txt.zip', model: prepare.prepareRegion},
-  {name: 'departements', source: 'depts2018-txt.zip', model: prepare.prepareDepartement},
-  {name: 'arrondissements', source: 'arrond2018-txt.zip', model: prepare.prepareArrondissement},
-  {name: 'communes', source: 'France2018-txt.zip', model: prepare.prepareCommune}
-]
+async function buildArrondissements() {
+  const rows = await extractDataFromSource('arrond2018-txt.zip')
+  const data = rows.map(prepare.prepareRegion).filter(Boolean)
+  await writeData('arrondissements', data)
+}
+
+async function buildCommunes() {
+  const rows = await extractDataFromSource('France2018-txt.zip')
+  const data = rows.map(prepare.prepareRegion).filter(Boolean)
+  await writeData('communes', data)
+}
 
 async function main() {
-  await Promise.all(DATASETS.map(async ({source, model, name}) => {
-    const rawData = await extractDataFromSource(source)
-    const data = rawData.map(model).filter(Boolean)
-    await writeJsonFile(join(__dirname, '..', 'data', `${name}.json`), data, {indent: null})
-  }))
+  await buildRegions()
+  await buildDepartements()
+  await buildArrondissements()
+  await buildCommunes()
 }
 
 main().catch(err => {
