@@ -24,7 +24,7 @@ async function applyChanges(communesInitiales) {
 
   chain(table)
     .groupBy('DepComN')
-    .forEach((membres, codeCommuneNouvelle) => {
+    .forEach(membres => {
       const communeNouvelle = membres.find(m => m.DepComN === m.DepComA)
 
       membres.forEach(m => {
@@ -33,19 +33,21 @@ async function applyChanges(communesInitiales) {
 
           switch (c.type) {
             case 'commune-absorbee':
-            break
+              break
 
             case 'commune-associee':
               c.type = communeNouvelle.Commentaire === ASSOCIEES_DELEGUEES ?
                 'commune-deleguee' :
                 'commune-absorbee'
-            break
+              break
 
             case 'commune-deleguee':
               c.type = communeNouvelle.Commentaire === MAINTIENT_DELEGUEES ?
                 'commune-deleguee' :
                 'commune-absorbee'
-            break
+              break
+
+            default:
           }
         })
 
