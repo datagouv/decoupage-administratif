@@ -33,6 +33,7 @@ function computeNom(ARTMIN, NCCENR) {
   if (!ARTMIN) {
     return NCCENR
   }
+
   return (ARTMIN.endsWith('\'') ? ARTMIN : ARTMIN + ' ') + NCCENR
 }
 
@@ -67,6 +68,7 @@ function prepareCommune({REG, DEP, COM, AR, TNCC, ARTMIN, NCCENR, POLE, ACTUAL, 
       if (POLE) {
         commune.communeAbsorbante = POLE
       }
+
       break
     // Ancien code dû à un changement de département
     case '4':

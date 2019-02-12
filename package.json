@@ -29,7 +29,7 @@
     "pumpify": "^1.5.1",
     "rimraf": "^2.6.3",
     "write-json-file": "^3.1.0",
-    "xo": "^0.20.3"
+    "xo": "^0.24.0"
   },
   "xo": {
     "semicolon": false,
