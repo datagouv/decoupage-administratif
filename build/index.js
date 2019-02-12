@@ -1,5 +1,6 @@
 /* eslint unicorn/no-process-exit: off */
 const prepare = require('./prepare')
+const {applyChanges} = require('./communes-nouvelles')
 const {writeData, extractDataFromSource} = require('./util')
 
 async function buildRegions() {
@@ -23,6 +24,7 @@ async function buildArrondissements() {
 async function buildCommunes() {
   const rows = await extractDataFromSource('France2018-txt.zip')
   const data = rows.map(prepare.prepareCommune).filter(Boolean)
+  await applyChanges(data)
   await writeData('communes', data)
 }
 

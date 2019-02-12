@@ -62,11 +62,13 @@ function prepareCommune({REG, DEP, COM, AR, TNCC, ARTMIN, NCCENR, POLE, ACTUAL, 
       commune.chefLieu = POLE
       commune.type = 'commune-associee'
       break
-    // Commune périmée
+    // Commune "périmée"
     case '3':
-      commune.type = 'commune-perimee'
       if (POLE) {
+        commune.type = 'commune-absorbee'
         commune.communeAbsorbante = POLE
+      } else {
+        commune.type = 'commune-perimee'
       }
 
       break
