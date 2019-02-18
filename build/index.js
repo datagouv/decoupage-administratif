@@ -1,7 +1,8 @@
 /* eslint unicorn/no-process-exit: off */
 const prepare = require('./prepare')
 const {applyChanges} = require('./communes-nouvelles')
-const {writeData, extractDataFromSource} = require('./util')
+const {extractEPCI} = require('./epci')
+const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
   const rows = await extractDataFromSource('reg2018-txt.zip')
@@ -28,11 +29,17 @@ async function buildCommunes() {
   await writeData('communes', data)
 }
 
+async function buildEPCI() {
+  const rows = await extractEPCI(getSourceFilePath('epcicom2019.xlsx'))
+  await writeData('epci', rows)
+}
+
 async function main() {
   await buildRegions()
   await buildDepartements()
   await buildArrondissements()
   await buildCommunes()
+  await buildEPCI()
 }
 
 main().catch(error => {

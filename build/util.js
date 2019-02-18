@@ -7,6 +7,10 @@ const pumpify = require('pumpify').obj
 const writeJsonFile = require('write-json-file')
 const intoStream = require('into-stream')
 
+function getSourceFilePath(fileName) {
+  return join(__dirname, '..', 'sources', fileName)
+}
+
 async function extractDataFromFile(path) {
   const [file] = await decompress(path)
   const stream = pumpify(
@@ -18,11 +22,11 @@ async function extractDataFromFile(path) {
 }
 
 function extractDataFromSource(fileName) {
-  return extractDataFromFile(join(__dirname, '..', 'sources', fileName))
+  return extractDataFromFile(getSourceFilePath(fileName))
 }
 
 async function writeData(name, data) {
   await writeJsonFile(join(__dirname, '..', 'data', `${name}.json`), data, {indent: null})
 }
 
-module.exports = {writeData, extractDataFromSource}
+module.exports = {writeData, extractDataFromSource, getSourceFilePath}
