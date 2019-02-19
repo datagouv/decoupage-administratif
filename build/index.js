@@ -2,7 +2,7 @@
 const prepare = require('./prepare')
 const {applyChanges} = require('./communes-nouvelles')
 const {extractEPCI} = require('./epci')
-const {extractPopulation} = require('./population')
+const {extractPopulation, computeMLPPopulation, MLP_CODES} = require('./population')
 const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
@@ -30,7 +30,7 @@ async function buildCommunes({population}) {
     .filter(Boolean)
 
   data.forEach(commune => {
-    if (commune.type === 'commune-actuelle') {
+    if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
       if (commune.code in population) {
         commune.population = population[commune.code].populationMunicipale
       } else if (shouldWarnPopulation(commune.code)) {
@@ -40,6 +40,7 @@ async function buildCommunes({population}) {
   })
 
   await applyChanges(data)
+  await computeMLPPopulation(data)
   await writeData('communes', data)
 }
 
@@ -63,7 +64,7 @@ function shouldWarnPopulation(codeCommune) {
     return false // Mayotte
   }
 
-  if (['75056', '13055', '69123'].includes(codeCommune)) {
+  if (MLP_CODES.includes(codeCommune)) {
     return false // Paris, Marseille, Lyon
   }
 

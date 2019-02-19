@@ -1,4 +1,3 @@
-const {join} = require('path')
 const {promisify} = require('util')
 const fs = require('fs')
 const zlib = require('zlib')
@@ -7,6 +6,8 @@ const xlsx = require('node-xlsx').default
 
 const readFile = promisify(fs.readFile)
 const gunzip = promisify(zlib.gunzip)
+
+const MLP_CODES = ['75056', '13055', '69123']
 
 async function loadSheets(path) {
   const fileContent = await readFile(path)
@@ -39,4 +40,13 @@ async function extractPopulation(path) {
   }
 }
 
-module.exports = {extractPopulation}
+async function computeMLPPopulation(communes) {
+  MLP_CODES.forEach(code => {
+    const commune = communes.find(c => c.code === code)
+    commune.population = communes
+      .filter(c => c.commune === code)
+      .reduce((population, arrondissement) => population + arrondissement.population, 0)
+  })
+}
+
+module.exports = {extractPopulation, computeMLPPopulation, MLP_CODES}
