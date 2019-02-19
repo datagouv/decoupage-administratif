@@ -52,6 +52,7 @@ async function applyChanges(communesInitiales) {
         })
 
         const commune = communesIndex[m.DepComA]
+        const chefLieu = communesIndex[m.DepComN]
 
         if (m.ChefLieu === 'O') {
           commune.chefLieu = undefined
@@ -60,6 +61,11 @@ async function applyChanges(communesInitiales) {
         } else {
           commune.chefLieu = m.DepComN
           commune.type = m.ComDLG === 'O' ? 'commune-deleguee' : 'commune-absorbee'
+          if (chefLieu.population && commune.population) {
+            chefLieu.population += commune.population
+          }
+
+          delete commune.population
         }
       })
     })
