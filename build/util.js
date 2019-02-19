@@ -4,7 +4,7 @@ const parse = require('csv-parser')
 const decompress = require('decompress')
 const {decodeStream} = require('iconv-lite')
 const pumpify = require('pumpify').obj
-const writeJsonFile = require('write-json-file')
+const {outputFile} = require('fs-extra')
 const intoStream = require('into-stream')
 
 function getSourceFilePath(fileName) {
@@ -25,8 +25,13 @@ function extractDataFromSource(fileName) {
   return extractDataFromFile(getSourceFilePath(fileName))
 }
 
+async function writeJsonArray(path, data) {
+  const jsonData = '[\n' + data.map(JSON.stringify).join(',\n') + '\n]\n'
+  await outputFile(path, jsonData)
+}
+
 async function writeData(name, data) {
-  await writeJsonFile(join(__dirname, '..', 'data', `${name}.json`), data, {indent: null})
+  await writeJsonArray(join(__dirname, '..', 'data', `${name}.json`), data)
 }
 
 module.exports = {writeData, extractDataFromSource, getSourceFilePath}

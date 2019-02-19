@@ -23,6 +23,7 @@
   "devDependencies": {
     "csv-parser": "^2.1.0",
     "decompress": "^4.2.0",
+    "fs-extra": "^7.0.1",
     "get-stream": "^4.1.0",
     "iconv-lite": "^0.4.24",
     "into-stream": "^4.0.0",
@@ -30,7 +31,6 @@
     "node-xlsx": "^0.14.1",
     "pumpify": "^1.5.1",
     "rimraf": "^2.6.3",
-    "write-json-file": "^3.1.0",
     "xo": "^0.24.0"
   },
   "xo": {
