@@ -1,11 +1,11 @@
-const {parse} = require('node-xlsx')
 const {zipObject, groupBy, keyBy, chain, union} = require('lodash')
+const {readSheets, getSourceFilePath} = require('./util')
 
 const MAINTIENT_DELEGUEES = 'maintien des communes déléguées existantes'
 const ASSOCIEES_DELEGUEES = 'les anciennes communes associées deviennent déléguées'
 
 async function extractCommunesNouvellesTable() {
-  const [sheet] = parse(`${__dirname}/../sources/communes_nouvelles_2018.xls`, {cellDates: true})
+  const [sheet] = await readSheets(getSourceFilePath('communes_nouvelles_2018.xls'))
   const [columns, ...rows] = sheet.data
   return rows.map(row => zipObject(columns, row)).filter(r => r.NomCN)
 }

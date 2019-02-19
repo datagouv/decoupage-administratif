@@ -1,9 +1,5 @@
-const {promisify} = require('util')
-const fs = require('fs')
 const {zipObject, chain} = require('lodash')
-const xlsx = require('node-xlsx').default
-
-const readFile = promisify(fs.readFile)
+const {readSheets} = require('./util')
 
 function formatSiren(siren) {
   return String(siren).padStart(9, '0')
@@ -14,8 +10,7 @@ function formatCodeCommune(codeCommune) {
 }
 
 async function extractEPCI(path) {
-  const fileContent = await readFile(path)
-  const [sheet] = xlsx.parse(fileContent)
+  const [sheet] = await readSheets(path)
   const [columns, ...rows] = sheet.data
   const items = rows.map(row => zipObject(columns, row))
   return chain(items)
