@@ -1,5 +1,5 @@
 const {parse} = require('node-xlsx')
-const {zipObject, groupBy, keyBy, chain} = require('lodash')
+const {zipObject, groupBy, keyBy, chain, union} = require('lodash')
 
 const MAINTIENT_DELEGUEES = 'maintien des communes déléguées existantes'
 const ASSOCIEES_DELEGUEES = 'les anciennes communes associées deviennent déléguées'
@@ -65,7 +65,12 @@ async function applyChanges(communesInitiales) {
             chefLieu.population += commune.population
           }
 
+          if (chefLieu.codesPostaux && commune.codesPostaux) {
+            chefLieu.codesPostaux = union(chefLieu.codesPostaux, commune.codesPostaux)
+          }
+
           delete commune.population
+          delete commune.codesPostaux
         }
       })
     })

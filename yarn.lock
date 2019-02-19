@@ -397,6 +397,13 @@ codepage@~1.14.0:
     commander "~2.14.1"
     exit-on-epipe "~1.0.1"
 
+codes-postaux@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/codes-postaux/-/codes-postaux-3.1.1.tgz#8df619777ce9033422de40fabb3ed552f5ec64db"
+  integrity sha512-bWBfVQiyFrT+XgUhAf+FoDMfiWkSUKREa6YAbtra49HKigPkjj9RNTWmvxVuwIfV8Oz6B7FxFBjKXUcy2LbpAg==
+  dependencies:
+    lodash "^4.17.11"
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"

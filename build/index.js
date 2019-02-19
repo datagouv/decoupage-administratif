@@ -2,7 +2,9 @@
 const prepare = require('./prepare')
 const {applyChanges} = require('./communes-nouvelles')
 const {extractEPCI} = require('./epci')
-const {extractPopulation, computeMLPPopulation, MLP_CODES} = require('./population')
+const {extractPopulation, computeMLPPopulation} = require('./population')
+const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
+const {MLP_CODES} = require('./mlp')
 const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
@@ -31,6 +33,13 @@ async function buildCommunes({population}) {
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
+      const codesPostaux = getCodesPostaux(commune.code)
+      if (codesPostaux.length > 0) {
+        commune.codesPostaux = codesPostaux
+      } else if (shouldWarnCodePostal(commune.code)) {
+        console.log(`Commune du COG sans code postal : ${commune.code}`)
+      }
+
       if (commune.code in population) {
         commune.population = population[commune.code].populationMunicipale
       } else if (shouldWarnPopulation(commune.code)) {
@@ -41,6 +50,7 @@ async function buildCommunes({population}) {
 
   await applyChanges(data)
   await computeMLPPopulation(data)
+  await computeMLPCodesPostaux(data)
   await writeData('communes', data)
 }
 
@@ -64,6 +74,14 @@ function shouldWarnPopulation(codeCommune) {
     return false // Mayotte
   }
 
+  if (MLP_CODES.includes(codeCommune)) {
+    return false // Paris, Marseille, Lyon
+  }
+
+  return true
+}
+
+function shouldWarnCodePostal(codeCommune) {
   if (MLP_CODES.includes(codeCommune)) {
     return false // Paris, Marseille, Lyon
   }

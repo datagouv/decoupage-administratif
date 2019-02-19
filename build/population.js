@@ -3,11 +3,10 @@ const fs = require('fs')
 const zlib = require('zlib')
 const {keyBy, zipObject} = require('lodash')
 const xlsx = require('node-xlsx').default
+const {MLP_CODES} = require('./mlp')
 
 const readFile = promisify(fs.readFile)
 const gunzip = promisify(zlib.gunzip)
-
-const MLP_CODES = ['75056', '13055', '69123']
 
 async function loadSheets(path) {
   const fileContent = await readFile(path)
@@ -49,4 +48,4 @@ async function computeMLPPopulation(communes) {
   })
 }
 
-module.exports = {extractPopulation, computeMLPPopulation, MLP_CODES}
+module.exports = {extractPopulation, computeMLPPopulation}
