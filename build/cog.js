@@ -1,17 +1,11 @@
-const {createReadStream} = require('fs')
-const parse = require('csv-parser')
-const pumpify = require('pumpify').obj
-const getStream = require('get-stream').array
+const {readCsvFile} = require('./util')
 
 function parseTypeLiaison(TNCC) {
   return Number.parseInt(TNCC, 10)
 }
 
 async function extractDepartements(path) {
-  const rows = await getStream(pumpify(
-    createReadStream(path),
-    parse({separator: ',', strict: true})
-  ))
+  const rows = await readCsvFile(path)
 
   return rows.map(row => {
     return {
@@ -25,10 +19,7 @@ async function extractDepartements(path) {
 }
 
 async function extractRegions(path) {
-  const rows = await getStream(pumpify(
-    createReadStream(path),
-    parse({separator: ',', strict: true})
-  ))
+  const rows = await readCsvFile(path)
 
   return rows.map(row => {
     return {
@@ -41,10 +32,7 @@ async function extractRegions(path) {
 }
 
 async function extractArrondissements(path) {
-  const rows = await getStream(pumpify(
-    createReadStream(path),
-    parse({separator: ',', strict: true})
-  ))
+  const rows = await readCsvFile(path)
 
   return rows.map(row => {
     return {

@@ -1,6 +1,8 @@
 const {join} = require('path')
 const {promisify} = require('util')
 const zlib = require('zlib')
+const {createReadStream} = require('fs')
+const {createGunzip} = require('gunzip-stream')
 const getStream = require('get-stream').array
 const parse = require('csv-parser')
 const decompress = require('decompress')
@@ -37,6 +39,14 @@ async function readSheets(filePath) {
   return xlsx.parse(fileContent, {cellDates: true})
 }
 
+function readCsvFile(filePath, options = {}) {
+  return getStream(pumpify(
+    createReadStream(filePath),
+    createGunzip(),
+    parse({separator: ',', strict: true, ...options})
+  ))
+}
+
 async function writeJsonArray(path, data) {
   const jsonData = '[\n' + data.map(JSON.stringify).join(',\n') + '\n]\n'
   await outputFile(path, jsonData)
@@ -46,4 +56,4 @@ async function writeData(name, data) {
   await writeJsonArray(join(__dirname, '..', 'data', `${name}.json`), data)
 }
 
-module.exports = {writeData, extractDataFromSource, getSourceFilePath, readSheets}
+module.exports = {writeData, extractDataFromSource, getSourceFilePath, readSheets, readCsvFile}
