@@ -6,18 +6,17 @@ const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
 const {extractCommunesCOM} = require('./collectivites-outremer')
-const {extractDepartements} = require('./cog')
+const {extractDepartements, extractRegions} = require('./cog')
 const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
-  const rows = await extractDataFromSource('reg2018-txt.zip')
-  const regions = rows.map(prepare.prepareRegion).filter(Boolean)
+  const regions = await extractRegions(getSourceFilePath('regions.csv'))
   await writeData('regions', regions)
 }
 
 async function buildDepartements() {
-  const data = await extractDepartements(getSourceFilePath('departements.csv'))
-  await writeData('departements', data)
+  const departements = await extractDepartements(getSourceFilePath('departements.csv'))
+  await writeData('departements', departements)
 }
 
 async function buildArrondissements() {

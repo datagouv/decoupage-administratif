@@ -1,12 +1,3 @@
-function prepareRegion({REGION, CHEFLIEU, TNCC, NCCENR}) {
-  return {
-    code: REGION,
-    chefLieu: CHEFLIEU,
-    nom: NCCENR,
-    typeLiaison: parseTypeLiaison(TNCC)
-  }
-}
-
 function prepareArrondissement({REGION, DEP, AR, CHEFLIEU, TNCC, NCCENR}) {
   return {
     code: DEP + AR,
@@ -90,7 +81,6 @@ function parseTypeLiaison(TNCC) {
 }
 
 module.exports = {
-  prepareRegion,
   prepareArrondissement,
   prepareCommune
 }

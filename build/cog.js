@@ -24,4 +24,20 @@ async function extractDepartements(path) {
   })
 }
 
-module.exports = {extractDepartements}
+async function extractRegions(path) {
+  const rows = await getStream(pumpify(
+    createReadStream(path),
+    parse({separator: ',', strict: true})
+  ))
+
+  return rows.map(row => {
+    return {
+      code: row.reg,
+      chefLieu: row.cheflieu,
+      nom: row.libelle,
+      typeLiaison: parseTypeLiaison(row.tncc)
+    }
+  })
+}
+
+module.exports = {extractDepartements, extractRegions}
