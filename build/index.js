@@ -7,6 +7,7 @@ const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
 const {extractCommunesCOM} = require('./collectivites-outremer')
 const {extractDepartements, extractRegions, extractArrondissements} = require('./cog')
+const {extractHistoriqueCommunes, flattenRecord} = require('./historique-communes')
 const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
@@ -62,13 +63,23 @@ async function buildEPCI() {
   await writeData('epci', rows)
 }
 
+async function buildHistoriqueCommunes(historiqueCommunes) {
+  const rows = historiqueCommunes.map(flattenRecord)
+  await writeData('historique-communes', rows)
+}
+
 async function main() {
   const population = await extractPopulation(getSourceFilePath('population2019.xls.gz'))
+  const historiqueCommunes = await extractHistoriqueCommunes(
+    getSourceFilePath('communes-2019.csv.gz'),
+    getSourceFilePath('mouvements-communes-2019.csv.gz')
+  )
 
   await buildRegions()
   await buildDepartements()
   await buildArrondissements()
   await buildCommunes({population: population.communes})
+  await buildHistoriqueCommunes(historiqueCommunes)
   await buildEPCI()
 }
 
