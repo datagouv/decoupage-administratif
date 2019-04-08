@@ -5,6 +5,7 @@ const {extractEPCI} = require('./epci')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
+const {extractCommunesCOM} = require('./collectivites-outremer')
 const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
 
 async function buildRegions() {
@@ -51,6 +52,10 @@ async function buildCommunes({population}) {
   await applyChanges(data)
   await computeMLPPopulation(data)
   await computeMLPCodesPostaux(data)
+
+  const communesCOM = await extractCommunesCOM(getSourceFilePath('collectivites-outremer.csv'))
+  communesCOM.forEach(commune => data.push(commune))
+
   await writeData('communes', data)
 }
 
