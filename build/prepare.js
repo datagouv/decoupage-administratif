@@ -1,14 +1,3 @@
-function prepareArrondissement({REGION, DEP, AR, CHEFLIEU, TNCC, NCCENR}) {
-  return {
-    code: DEP + AR,
-    departement: DEP,
-    region: REGION,
-    chefLieu: CHEFLIEU,
-    nom: NCCENR,
-    typeLiaison: parseTypeLiaison(TNCC)
-  }
-}
-
 function computeNom(ARTMIN, NCCENR) {
   ARTMIN = ARTMIN.replace(/\(|\)/g, '')
   if (!ARTMIN) {
@@ -81,6 +70,5 @@ function parseTypeLiaison(TNCC) {
 }
 
 module.exports = {
-  prepareArrondissement,
   prepareCommune
 }
