@@ -28,7 +28,7 @@ const arrondissements = require('@etalab/decoupage-administratif/data/arrondisse
 
 ## Sources
 
-* [Code Officiel Géographique](https://www.data.gouv.fr/fr/datasets/code-officiel-geographique-cog/) de l'INSEE
+* [Code Officiel Géographique](https://insee.fr/fr/information/2560452) de l'INSEE
 * [Table de passage des communes nouvelles](https://www.insee.fr/fr/information/2549968) de l'INSEE
 * [Liste des EPCI à fiscalité propre](https://www.collectivites-locales.gouv.fr/liste-et-composition-des-epci-a-fiscalite-propre) de la DGCL
 * [Population légale](https://www.insee.fr/fr/statistiques/3677855) de l'INSEE
