@@ -1,35 +1,27 @@
-/* eslint unicorn/no-process-exit: off */
-const prepare = require('./prepare')
-const {applyChanges} = require('./communes-nouvelles')
+#!/usr/bin/env node
 const {extractEPCI} = require('./epci')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
 const {extractCommunesCOM} = require('./collectivites-outremer')
-const {extractDepartements, extractRegions, extractArrondissements} = require('./cog')
+const {extractDepartements, extractRegions, extractArrondissements, extractCommunes} = require('./cog')
 const {extractHistoriqueCommunes, flattenRecord} = require('./historique-communes')
-const {writeData, extractDataFromSource, getSourceFilePath} = require('./util')
+const {writeData, getSourceFilePath} = require('./util')
 
-async function buildRegions() {
-  const regions = await extractRegions(getSourceFilePath('regions.csv'))
+async function buildRegions(regions) {
   await writeData('regions', regions)
 }
 
-async function buildDepartements() {
-  const departements = await extractDepartements(getSourceFilePath('departements.csv'))
+async function buildDepartements(departements) {
   await writeData('departements', departements)
 }
 
-async function buildArrondissements() {
-  const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
+async function buildArrondissements(arrondissements) {
   await writeData('departements', arrondissements)
 }
 
-async function buildCommunes({population}) {
-  const rows = await extractDataFromSource('France2018-txt.zip')
-  const data = rows
-    .map(prepare.prepareCommune)
-    .filter(Boolean)
+async function buildCommunes(regions, departements, arrondissements, population) {
+  const data = await extractCommunes(getSourceFilePath('communes-2019.csv.gz'), arrondissements, departements, regions)
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
@@ -48,7 +40,6 @@ async function buildCommunes({population}) {
     }
   })
 
-  await applyChanges(data)
   await computeMLPPopulation(data)
   await computeMLPCodesPostaux(data)
 
@@ -74,11 +65,14 @@ async function main() {
     getSourceFilePath('communes-2019.csv.gz'),
     getSourceFilePath('mouvements-communes-2019.csv.gz')
   )
+  const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
+  const departements = await extractDepartements(getSourceFilePath('departements.csv'))
+  const regions = await extractRegions(getSourceFilePath('regions.csv'))
 
-  await buildRegions()
-  await buildDepartements()
-  await buildArrondissements()
-  await buildCommunes({population: population.communes})
+  await buildRegions(regions)
+  await buildDepartements(departements)
+  await buildArrondissements(arrondissements)
+  await buildCommunes(regions, departements, arrondissements, population.communes)
   await buildHistoriqueCommunes(historiqueCommunes)
   await buildEPCI()
 }

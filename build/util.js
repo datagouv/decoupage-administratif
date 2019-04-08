@@ -5,11 +5,8 @@ const {createReadStream} = require('fs')
 const {createGunzip} = require('gunzip-stream')
 const getStream = require('get-stream').array
 const parse = require('csv-parser')
-const decompress = require('decompress')
-const {decodeStream} = require('iconv-lite')
 const pumpify = require('pumpify').obj
 const {outputFile} = require('fs-extra')
-const intoStream = require('into-stream')
 const {readFile} = require('fs-extra')
 const xlsx = require('node-xlsx').default
 
@@ -17,20 +14,6 @@ const gunzip = promisify(zlib.gunzip)
 
 function getSourceFilePath(fileName) {
   return join(__dirname, '..', 'sources', fileName)
-}
-
-async function extractDataFromFile(path) {
-  const [file] = await decompress(path)
-  const stream = pumpify(
-    intoStream(file.data),
-    decodeStream('win1252'),
-    parse({separator: '\t', strict: true})
-  )
-  return getStream(stream)
-}
-
-function extractDataFromSource(fileName) {
-  return extractDataFromFile(getSourceFilePath(fileName))
 }
 
 async function readSheets(filePath) {
@@ -56,4 +39,4 @@ async function writeData(name, data) {
   await writeJsonArray(join(__dirname, '..', 'data', `${name}.json`), data)
 }
 
-module.exports = {writeData, extractDataFromSource, getSourceFilePath, readSheets, readCsvFile}
+module.exports = {writeData, getSourceFilePath, readSheets, readCsvFile}
