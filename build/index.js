@@ -20,8 +20,8 @@ async function buildArrondissements(arrondissements) {
   await writeData('departements', arrondissements)
 }
 
-async function buildCommunes(regions, departements, arrondissements, population) {
-  const data = await extractCommunes(getSourceFilePath('communes-2019.csv.gz'), arrondissements, departements, regions)
+async function buildCommunes(regions, departements, arrondissements, population, historiqueCommunes) {
+  const data = await extractCommunes(getSourceFilePath('communes-2019.csv.gz'), arrondissements, departements, regions, historiqueCommunes)
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
@@ -72,7 +72,7 @@ async function main() {
   await buildRegions(regions)
   await buildDepartements(departements)
   await buildArrondissements(arrondissements)
-  await buildCommunes(regions, departements, arrondissements, population.communes)
+  await buildCommunes(regions, departements, arrondissements, population.communes, historiqueCommunes)
   await buildHistoriqueCommunes(historiqueCommunes)
   await buildEPCI()
 }
