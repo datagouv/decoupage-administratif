@@ -1,3 +1,4 @@
+const {keyBy} = require('lodash')
 const {readCsvFile} = require('./util')
 
 function parseTypeLiaison(TNCC) {
@@ -99,6 +100,17 @@ async function extractCommunes(path, arrondissements, departements, regions) {
     }
 
     return commune
+  })
+
+  const communesActuelles = keyBy(communes.filter(c => c.type === 'commune-actuelle'), 'code')
+
+  communes.forEach(commune => {
+    if (commune.type !== 'commune-actuelle' && (commune.chefLieu || commune.commune)) {
+      const communeParente = communesActuelles[commune.chefLieu || commune.commune]
+      commune.arrondissement = communeParente.arrondissement
+      commune.departement = communeParente.departement
+      commune.region = communeParente.region
+    }
   })
 
   return communes
