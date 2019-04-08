@@ -24,6 +24,10 @@ async function extractCommunesCOM(path) {
       commune.codesPostaux = [row.code_postal]
     }
 
+    if (row.population) {
+      commune.population = Number.parseInt(row.population, 10)
+    }
+
     return commune
   })
 }
