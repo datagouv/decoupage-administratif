@@ -1,13 +1,7 @@
-const {createReadStream} = require('fs')
-const parse = require('csv-parser')
-const pumpify = require('pumpify').obj
-const getStream = require('get-stream').array
+const {readCsvFile} = require('./util')
 
 async function extractCommunesCOM(path) {
-  const rows = await getStream(pumpify(
-    createReadStream(path),
-    parse({separator: ',', strict: true})
-  ))
+  const rows = await readCsvFile(path)
 
   return rows.map(row => {
     const commune = {
