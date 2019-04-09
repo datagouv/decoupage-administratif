@@ -1,5 +1,6 @@
 # @etalab/decoupage-administratif
-API JavaScript permettant d'interroger le découpage administratif français
+
+Données concernant le découpage administratif français, au format JSON.
 
 - Communes
 - Historique des communes depuis 1943
