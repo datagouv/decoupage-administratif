@@ -17,7 +17,7 @@ async function buildDepartements(departements) {
 }
 
 async function buildArrondissements(arrondissements) {
-  await writeData('departements', arrondissements)
+  await writeData('arrondissements', arrondissements)
 }
 
 async function buildCommunes(regions, departements, arrondissements, population, historiqueCommunes) {
