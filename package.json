@@ -1,6 +1,6 @@
 {
   "name": "@etalab/decoupage-administratif",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "API JavaScript permettant d'interroger le découpage administratif français",
   "main": ".",
   "repository": "git@github.com:etalab/decoupage-administratif.git",
