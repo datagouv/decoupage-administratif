@@ -2,7 +2,7 @@
   "name": "@etalab/decoupage-administratif",
   "version": "0.6.0",
   "description": "API JavaScript permettant d'interroger le découpage administratif français",
-  "main": "index.js",
+  "main": ".",
   "repository": "git@github.com:etalab/decoupage-administratif.git",
   "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
   "license": "MIT",
