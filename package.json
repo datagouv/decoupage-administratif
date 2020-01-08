@@ -17,6 +17,7 @@
   "scripts": {
     "build": "node build",
     "lint": "xo",
+    "test": "xo",
     "prepare": "node build"
   },
   "dependencies": {
