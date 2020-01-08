@@ -18,7 +18,7 @@
     "build": "node build",
     "lint": "xo",
     "test": "yarn lint",
-    "prepare": "rimraf data && yarn build"
+    "prepare": "yarn build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -30,7 +30,6 @@
     "lodash": "^4.17.11",
     "node-xlsx": "^0.14.1",
     "pumpify": "^1.5.1",
-    "rimraf": "^2.6.3",
     "xo": "^0.24.0"
   },
   "xo": {

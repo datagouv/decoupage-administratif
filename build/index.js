@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const {join} = require('path')
+const {remove} = require('fs-extra')
 const {extractEPCI} = require('./epci')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
@@ -60,6 +62,8 @@ async function buildHistoriqueCommunes(historiqueCommunes) {
 }
 
 async function main() {
+  await remove(join(__dirname, '..', 'data'))
+
   const population = await extractPopulation(getSourceFilePath('population2019.xls.gz'))
   const historiqueCommunes = await extractHistoriqueCommunes(
     getSourceFilePath('communes-2019.csv.gz'),
