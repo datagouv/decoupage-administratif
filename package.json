@@ -17,8 +17,7 @@
   "scripts": {
     "build": "node build",
     "lint": "xo",
-    "test": "yarn lint",
-    "prepare": "yarn build"
+    "prepare": "node build"
   },
   "dependencies": {
     "lodash": "^4.17.15"
