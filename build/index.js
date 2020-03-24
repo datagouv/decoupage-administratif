@@ -52,7 +52,7 @@ async function buildCommunes(regions, departements, arrondissements, population,
 }
 
 async function buildEPCI() {
-  const rows = await extractEPCI(getSourceFilePath('epcicom2019.xlsx'))
+  const rows = await extractEPCI(getSourceFilePath('epcicom2020.xlsx'))
   await writeData('epci', rows)
 }
 
