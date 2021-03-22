@@ -2,16 +2,16 @@ const {chain} = require('lodash')
 const {isFusionAssociation, mouvementToKey, mouvementToCommune} = require('../helpers')
 
 module.exports = function (mouvements, model) {
-  const communesAssociees = mouvements.filter(m => m.typecom_ap === 'COMA').map(m => m.com_ap)
+  const communesAssociees = mouvements.filter(m => m.TYPECOM_AP === 'COMA').map(m => m.COM_AP)
 
   chain(mouvements)
-    .filter(m => m.typecom_ap !== 'COMA')
-    .groupBy('com_ap')
+    .filter(m => m.TYPECOM_AP !== 'COMA')
+    .groupBy('COM_AP')
     .forEach(mouvementsComposition => {
       const communesMembres = chain(mouvementsComposition)
-        .uniqBy(m => mouvementToKey(m, 'av')) // FIX doublons fichier INSEE
+        .uniqBy(m => mouvementToKey(m, 'AV')) // FIX doublons fichier INSEE
         .map(m => {
-          const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'av'))
+          const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'AV'))
           if (isFusionAssociation(communeOrigine)) {
             const membres = communeOrigine.membres
               .filter(communeMembre => !(communesAssociees.includes(communeMembre.code)))
@@ -46,7 +46,7 @@ module.exports = function (mouvements, model) {
         .value()
 
       const communeGroupe = model.initCommune({
-        ...mouvementToCommune(mouvementsComposition[0], 'ap'),
+        ...mouvementToCommune(mouvementsComposition[0], 'AP'),
         type: 'COM'
       })
 

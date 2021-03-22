@@ -5,24 +5,24 @@ function getKey(record) {
 }
 
 function mouvementToCommune(m, select) {
-  if (!select || !['av', 'ap'].includes(select)) {
-    throw new Error('select est requis et doit être "av" ou "ap"')
+  if (!select || !['AV', 'AP'].includes(select)) {
+    throw new Error('select est requis et doit être "AV" ou "AP"')
   }
 
   return {
-    type: m['typecom_' + select],
-    code: m['com_' + select],
-    nom: m['libelle_' + select],
-    typeLiaison: Number.parseInt(m['tncc_' + select], 10)
+    type: m['TYPECOM_' + select],
+    code: m['COM_' + select],
+    nom: m['LIBELLE_' + select],
+    typeLiaison: Number.parseInt(m['TNCC_' + select], 10)
   }
 }
 
 function mouvementToKey(m, select) {
-  if (!select || !['av', 'ap'].includes(select)) {
-    throw new Error('select est requis et doit être "av" ou "ap"')
+  if (!select || !['AV', 'AP'].includes(select)) {
+    throw new Error('select est requis et doit être "AV" ou "AP"')
   }
 
-  return m['typecom_' + select] + '-' + m['com_' + select]
+  return m['TYPECOM_' + select] + '-' + m['COM_' + select]
 }
 
 function isActiveAt(commune, date = DEFAULT_START_DATE) {

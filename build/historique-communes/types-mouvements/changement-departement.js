@@ -2,7 +2,7 @@ const {mouvementToCommune} = require('../helpers')
 
 module.exports = function (mouvements, model) {
   mouvements.forEach(m => {
-    const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'av'))
-    model.createSuccessor(communeOrigine, {code: m.com_ap}, 'changement de département')
+    const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'AV'))
+    model.createSuccessor(communeOrigine, {code: m.COM_AP}, 'changement de département')
   })
 }

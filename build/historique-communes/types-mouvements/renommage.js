@@ -3,14 +3,14 @@ const {mouvementToCommune} = require('../helpers')
 module.exports = function (mouvements, model) {
   mouvements.forEach(m => {
     // On ignore les lignes faisant intervenir d'autres types de communes (doute sur la pertinence de ces lignes)
-    if (m.typecom_av !== 'COM' || m.typecom_ap !== 'COM') {
+    if (m.TYPECOM_AV !== 'COM' || m.TYPECOM_AP !== 'COM') {
       return
     }
 
-    const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'av'))
+    const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'AV'))
     model.createSuccessor(
       communeOrigine,
-      {nom: m.libelle_ap, typeLiaison: Number.parseInt(m.tncc_ap, 10)},
+      {nom: m.LIBELLE_AP, typeLiaison: Number.parseInt(m.TNCC_AP, 10)},
       'changement de nom',
       true
     )

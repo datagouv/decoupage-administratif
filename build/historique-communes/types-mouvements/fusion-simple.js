@@ -3,18 +3,18 @@ const {mouvementToKey, mouvementToCommune} = require('../helpers')
 
 module.exports = function (mouvements, model) {
   chain(mouvements)
-    .groupBy('com_ap')
+    .groupBy('COM_AP')
     .forEach(mouvementsComposition => {
       const communesMembres = chain(mouvementsComposition)
-        .uniqBy(m => mouvementToKey(m, 'av')) // FIX doublons fichier INSEE
+        .uniqBy(m => mouvementToKey(m, 'AV')) // FIX doublons fichier INSEE
         .map(m => {
-          const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'av'))
+          const communeOrigine = model.getCommuneOrInit(mouvementToCommune(m, 'AV'))
           return model.createSuccessor(communeOrigine, {type: 'COMP'}, 'fusion simple', true)
         })
         .value()
 
       const communeGroupe = model.initCommune({
-        ...mouvementToCommune(mouvementsComposition[0], 'ap'),
+        ...mouvementToCommune(mouvementsComposition[0], 'AP'),
         type: 'COM'
       })
 

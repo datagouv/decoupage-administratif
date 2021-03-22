@@ -12,11 +12,11 @@ async function extractHistoriqueCommunes(communesPath, mouvementsPath) {
 
   chain(mouvements)
     // On ignore les arrondissements municipaux
-    .filter(m => m.typecom_av !== 'ARM' && m.typecom_ap !== 'ARM')
-    .groupBy('date_eff')
+    .filter(m => m.TYPECOM_AV !== 'ARM' && m.TYPECOM_AP !== 'ARM')
+    .groupBy('DATE_EFF')
     .forEach((mouvements, dateEffet) => {
       model.hello(dateEffet)
-      const mouvementsParCode = groupBy(mouvements, 'mod')
+      const mouvementsParCode = groupBy(mouvements, 'MOD')
 
       // Changement de nom
       if (mouvementsParCode['10']) {
@@ -73,15 +73,20 @@ async function extractHistoriqueCommunes(communesPath, mouvementsPath) {
       if (mouvementsParCode['34']) {
         require('./types-mouvements/transformation-associee-fusionnee')(mouvementsParCode['34'], model)
       }
+
+      // Suppression de la commune déléguée
+      if (mouvementsParCode['35']) {
+        require('./types-mouvements/suppression-deleguee')(mouvementsParCode['35'], model)
+      }
     }).value()
 
   const rawCommunes = await readCsvFile(communesPath)
   const communesActuelles = rawCommunes.map(r => ({
-    code: r.com,
-    type: r.typecom,
-    nom: r.libelle,
-    typeLiaison: Number.parseInt(r.tncc, 10),
-    codeCommuneParente: r.comparent
+    code: r.COM,
+    type: r.TYPECOM,
+    nom: r.LIBELLE,
+    typeLiaison: Number.parseInt(r.TNCC, 10),
+    codeCommuneParente: r.COMPARENT
   }))
   const index = keyBy(communesActuelles, c => getKey(c))
 

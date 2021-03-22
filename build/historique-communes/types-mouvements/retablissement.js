@@ -3,16 +3,16 @@ const {mouvementToCommune} = require('../helpers')
 
 module.exports = function (mouvements, model) {
   chain(mouvements)
-    .filter(m => m.typecom_av === 'COM')
-    .groupBy(m => m.com_av)
+    .filter(m => m.TYPECOM_AV === 'COM')
+    .groupBy(m => m.COM_AV)
     .forEach(mouvementsComposition => {
       const communesRetablies = mouvementsComposition
-        .filter(m => m.typecom_ap === 'COM')
-        .map(m => ({...mouvementToCommune(m, 'ap'), pole: undefined}))
+        .filter(m => m.TYPECOM_AP === 'COM')
+        .map(m => ({...mouvementToCommune(m, 'AP'), pole: undefined}))
 
       const communeGroupe = model.getCommune({
         type: 'COM',
-        code: mouvementsComposition[0].com_av
+        code: mouvementsComposition[0].COM_AV
       }, true)
 
       const groupeMaintenu = communeGroupe && communeGroupe.membres && communeGroupe.membres.some(communeMembre => {
@@ -20,33 +20,33 @@ module.exports = function (mouvements, model) {
       })
 
       const mvtCommuneGroupe =
-          mouvementsComposition.find(m => m.typecom_av === m.typecom_ap && m.com_av === m.com_ap)
+          mouvementsComposition.find(m => m.TYPECOM_AV === m.TYPECOM_AP && m.COM_AV === m.COM_AP)
 
       if (!(communeGroupe && communeGroupe.membres) && !groupeMaintenu) {
         // Création (on fait le choix de ne pas implicitement créer d'ensembles complexes dans le passé à ce stade)
 
         // On renomme néanmoins la commune mère le cas échéant
-        if (communeGroupe && mvtCommuneGroupe && mvtCommuneGroupe.libelle_ap !== communeGroupe.nom) {
+        if (communeGroupe && mvtCommuneGroupe && mvtCommuneGroupe.LIBELLE_AP !== communeGroupe.nom) {
           model.createSuccessor(
             communeGroupe,
             {
-              nom: mvtCommuneGroupe.libelle_ap,
-              typeLiaison: Number.parseInt(mvtCommuneGroupe.tncc_ap, 10),
+              nom: mvtCommuneGroupe.LIBELLE_AP,
+              typeLiaison: Number.parseInt(mvtCommuneGroupe.TNCC_AP, 10),
               membres: undefined
             },
             'renommage suite à création d’une commune fille',
             true)
         }
 
-        mouvementsComposition.filter(m => m.com_av !== m.com_ap).forEach(m => {
-          const commune = model.initCommune(mouvementToCommune(m, 'ap'))
+        mouvementsComposition.filter(m => m.COM_AV !== m.COM_AP).forEach(m => {
+          const commune = model.initCommune(mouvementToCommune(m, 'AP'))
           model.start(commune, 'création')
         })
       } else if ((communeGroupe && communeGroupe.membres) && groupeMaintenu) {
         // Rétablissement de certaines communes constituant la commune groupe
         const nouvelleCommuneGroupe = model.createSuccessor(
           communeGroupe,
-          mvtCommuneGroupe ? {nom: mvtCommuneGroupe.libelle_ap, typeLiaison: Number.parseInt(mvtCommuneGroupe.tncc_ap, 10)} : {},
+          mvtCommuneGroupe ? {nom: mvtCommuneGroupe.LIBELLE_AP, typeLiaison: Number.parseInt(mvtCommuneGroupe.TNCC_AP, 10)} : {},
           'recomposition de la commune groupe',
           true
         )
@@ -69,9 +69,9 @@ module.exports = function (mouvements, model) {
         model.end(communeGroupe, 'dé-fusion')
         mouvementsComposition.forEach(m => {
           const ancienneCommune = model.getInactiveCommuneOrInit({
-            code: m.com_ap,
-            nom: m.libelle_ap,
-            typeLiaison: m.tncc_ap
+            code: m.COM_AP,
+            nom: m.LIBELLE_AP,
+            typeLiaison: m.TNCC_AP
           })
           if (!ancienneCommune.pole) {
             // Cas où la commune vient d'être créée (périmée au 1er janvier 1943)
@@ -81,7 +81,7 @@ module.exports = function (mouvements, model) {
 
           model.createSuccessor(
             ancienneCommune,
-            {type: 'COM', nom: m.libelle_ap, typeLiaison: Number.parseInt(m.tncc_ap, 10), pole: undefined},
+            {type: 'COM', nom: m.LIBELLE_AP, typeLiaison: Number.parseInt(m.TNCC_AP, 10), pole: undefined},
             'dé-fusion'
           )
         })
