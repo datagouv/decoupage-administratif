@@ -28,7 +28,6 @@
     "csv-parser": "^2.3.2",
     "fs-extra": "^8.1.0",
     "get-stream": "^5.1.0",
-    "gunzip-stream": "^1.0.1",
     "node-xlsx": "^0.15.0",
     "pumpify": "^2.0.1",
     "xo": "^0.25.3"

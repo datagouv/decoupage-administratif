@@ -2,7 +2,6 @@ const {join} = require('path')
 const {promisify} = require('util')
 const zlib = require('zlib')
 const {createReadStream} = require('fs')
-const {createGunzip} = require('gunzip-stream')
 const getStream = require('get-stream').array
 const parse = require('csv-parser')
 const pumpify = require('pumpify').obj
@@ -25,7 +24,6 @@ async function readSheets(filePath) {
 function readCsvFile(filePath, options = {}) {
   return getStream(pumpify(
     createReadStream(filePath),
-    createGunzip(),
     parse({separator: ',', strict: true, ...options})
   ))
 }
