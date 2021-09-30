@@ -65,10 +65,10 @@ async function main() {
   await remove(join(__dirname, '..', 'data'))
 
   const population = await extractPopulation(getSourceFilePath('population2019.xls.gz'))
-  const historiqueCommunes = await extractHistoriqueCommunes(
-    getSourceFilePath('communes.csv'),
-    getSourceFilePath('mouvements-communes.csv')
-  )
+  // const historiqueCommunes = await extractHistoriqueCommunes(
+  //   getSourceFilePath('communes.csv'),
+  //   getSourceFilePath('mouvements-communes.csv')
+  // )
   const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
   const departements = await extractDepartements(getSourceFilePath('departements.csv'))
   const regions = await extractRegions(getSourceFilePath('regions.csv'))
@@ -76,8 +76,8 @@ async function main() {
   await buildRegions(regions)
   await buildDepartements(departements)
   await buildArrondissements(arrondissements)
-  await buildCommunes(regions, departements, arrondissements, population.communes, historiqueCommunes)
-  await buildHistoriqueCommunes(historiqueCommunes)
+  await buildCommunes(regions, departements, arrondissements, population.communes/*, historiqueCommunes*/)
+  // await buildHistoriqueCommunes(historiqueCommunes)
   await buildEPCI()
 }
 
