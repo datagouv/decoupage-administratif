@@ -113,9 +113,7 @@ async function extractCommunes(path, arrondissements, departements, regions, his
     }
   })
 
-  if (historiqueCommunes) {
-    expandWithAnciensCodes(communes, historiqueCommunes)
-  }
+  expandWithAnciensCodes(communes, historiqueCommunes)
 
   return communes
 }
