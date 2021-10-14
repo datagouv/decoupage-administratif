@@ -63,9 +63,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 34,2020-08-01,COMA,28328,0,SAINT CHERON DES CHAMPS,Saint-Chéron-des-Champs,Saint-Chéron-des-Champs,COM,28393,0,TREMBLAY LES VILLAGES,Tremblay-les-Villages,Tremblay-les-Villages
 34,2020-08-01,COMA,28384,0,THEUVY ACHERES,Theuvy-Achères,Theuvy-Achères,COM,28393,0,TREMBLAY LES VILLAGES,Tremblay-les-Villages,Tremblay-les-Villages
 34,2020-08-01,COM,28393,0,TREMBLAY LES VILLAGES,Tremblay-les-Villages,Tremblay-les-Villages,COM,28393,0,TREMBLAY LES VILLAGES,Tremblay-les-Villages,Tremblay-les-Villages
-70,2020-07-22,COM,73006,0,AIME LA PLAGNE,Aime-la-Plagne,Aime-la-Plagne,COMD,73148,0,LONGEFOY,Longefoy,Longefoy
-70,2020-07-22,COM,73006,0,AIME LA PLAGNE,Aime-la-Plagne,Aime-la-Plagne,COMD,73291,0,TESSENS,Tessens,Tessens
-70,2020-07-22,COM,73006,0,AIME LA PLAGNE,Aime-la-Plagne,Aime-la-Plagne,COMD,73325,0,VILLETTE,Villette,Villette
 35,2020-07-11,COM,28012,0,COMMUNE NOUVELLE D ARROU,Commune nouvelle d'Arrou,Commune nouvelle d'Arrou,COM,28012,0,COMMUNE NOUVELLE D ARROU,Commune nouvelle d'Arrou,Commune nouvelle d'Arrou
 35,2020-07-11,COMD,28012,1,ARROU,Arrou,Arrou,COM,28012,0,COMMUNE NOUVELLE D ARROU,Commune nouvelle d'Arrou,Commune nouvelle d'Arrou
 35,2020-07-11,COMD,28044,0,BOISGASSON,Boisgasson,Boisgasson,COM,28012,0,COMMUNE NOUVELLE D ARROU,Commune nouvelle d'Arrou,Commune nouvelle d'Arrou
@@ -136,10 +133,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 35,2020-05-25,COMD,12223,0,SAINTE GENEVIEVE SUR ARGENCE,Sainte-Geneviève-sur-Argence,Sainte-Geneviève-sur-Argence,COM,12223,1,ARGENCES EN AUBRAC,Argences en Aubrac,Argences en Aubrac
 35,2020-05-25,COMD,12279,3,TERRISSE,Terrisse,La Terrisse,COM,12223,1,ARGENCES EN AUBRAC,Argences en Aubrac,Argences en Aubrac
 35,2020-05-25,COMD,12304,0,VITRAC EN VIADENE,Vitrac-en-Viadène,Vitrac-en-Viadène,COM,12223,1,ARGENCES EN AUBRAC,Argences en Aubrac,Argences en Aubrac
-70,2020-05-01,COM,52529,0,VILLEGUSIEN LE LAC,Villegusien-le-Lac,Villegusien-le-Lac,COMD,52387,0,PIEPAPE,Piépape,Piépape
-70,2020-05-01,COM,52529,0,VILLEGUSIEN LE LAC,Villegusien-le-Lac,Villegusien-le-Lac,COMD,52402,0,PRANGEY,Prangey,Prangey
-70,2020-05-01,COM,52529,0,VILLEGUSIEN LE LAC,Villegusien-le-Lac,Villegusien-le-Lac,COMD,52454,0,SAINT MICHEL,Saint-michel,Saint-michel
-70,2020-04-24,COM,08490,0,VOUZIERS,Vouziers,Vouziers,COMD,08068,0,BLAISE,Blaise,Blaise
 35,2020-04-01,COMD,16021,1,AUBEVILLE,Aubeville,Aubeville,COM,16175,0,VAL DES VIGNES,Val des Vignes,Val des Vignes
 35,2020-04-01,COM,16175,0,VAL DES VIGNES,Val des Vignes,Val des Vignes,COM,16175,0,VAL DES VIGNES,Val des Vignes,Val des Vignes
 35,2020-04-01,COMD,16175,0,JURIGNAC,Jurignac,Jurignac,COM,16175,0,VAL DES VIGNES,Val des Vignes,Val des Vignes
@@ -240,7 +233,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 35,2020-01-01,COMD,48022,0,BEDOUES,Bédouès,Bédouès,COM,48050,0,BEDOUES COCURES,Bédouès-Cocurès,Bédouès-Cocurès
 35,2020-01-01,COM,48050,0,BEDOUES COCURES,Bédouès-Cocurès,Bédouès-Cocurès,COM,48050,0,BEDOUES COCURES,Bédouès-Cocurès,Bédouès-Cocurès
 35,2020-01-01,COMD,48050,0,COCURES,Cocurès,Cocurès,COM,48050,0,BEDOUES COCURES,Bédouès-Cocurès,Bédouès-Cocurès
-70,2020-01-01,COM,52064,0,BOURMONT ENTRE MEUSE ET MOUZON,Bourmont-entre-Meuse-et-Mouzon,Bourmont-entre-Meuse-et-Mouzon,COMD,52224,0,GONAINCOURT,Gonaincourt,Gonaincourt
 35,2020-01-01,COMD,79214,0,POUFFONDS,Pouffonds,Pouffonds,COM,79251,0,MARCILLE,Marcillé,Marcillé
 35,2020-01-01,COM,79251,0,MARCILLE,Marcillé,Marcillé,COM,79251,0,MARCILLE,Marcillé,Marcillé
 35,2020-01-01,COMD,79251,0,SAINT GENARD,Saint-Génard,Saint-Génard,COM,79251,0,MARCILLE,Marcillé,Marcillé
@@ -1980,7 +1972,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 32,2017-01-01,COM,14217,0,DAMPIERRE,Dampierre,Dampierre,COMD,14217,0,DAMPIERRE,Dampierre,Dampierre
 32,2017-01-01,COM,14219,0,DANVOU LA FERRIERE,Danvou-la-Ferrière,Danvou-la-Ferrière,COMD,14219,0,DANVOU LA FERRIERE,Danvou-la-Ferrière,Danvou-la-Ferrière
 32,2017-01-01,COM,14235,1,ECRAMMEVILLE,Écrammeville,Écrammeville,COMD,14235,1,ECRAMMEVILLE,Écrammeville,Écrammeville
-70,2017-01-01,COMA,14267,0,FEUGUEROLLES SUR SEULLES,Feuguerolles-sur-Seulles,Feuguerolles-sur-Seulles,COMD,14267,0,FEUGUEROLLES SUR SEULLES,Feuguerolles-sur-Seulles,Feuguerolles-sur-Seulles
 32,2017-01-01,COM,14268,0,FIERVILLE BRAY,Fierville-Bray,Fierville-Bray,COMD,14268,0,FIERVILLE BRAY,Fierville-Bray,Fierville-Bray
 32,2017-01-01,COM,14279,0,FONTENERMONT,Fontenermont,Fontenermont,COMD,14279,0,FONTENERMONT,Fontenermont,Fontenermont
 32,2017-01-01,COM,14004,1,AIGNERVILLE,Aignerville,Aignerville,COM,14281,0,FORMIGNY LA BATAILLE,Formigny La Bataille,Formigny La Bataille
@@ -2067,7 +2058,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 32,2017-01-01,COMD,14475,0,NOYERS BOCAGE,Noyers-Bocage,Noyers-Bocage,COMD,14475,0,NOYERS BOCAGE,Noyers-Bocage,Noyers-Bocage
 32,2017-01-01,COM,14702,0,TOURNAY SUR ODON,Tournay-sur-Odon,Tournay-sur-Odon,COM,14475,0,VAL D ARRY,Val d'Arry,Val d'Arry
 32,2017-01-01,COM,14477,1,ONDEFONTAINE,Ondefontaine,Ondefontaine,COMD,14477,1,ONDEFONTAINE,Ondefontaine,Ondefontaine
-70,2017-01-01,COMA,14479,1,ORBOIS,Orbois,Orbois,COMD,14479,1,ORBOIS,Orbois,Orbois
 32,2017-01-01,COM,14481,4,OUBEAUX,Oubeaux,Les Oubeaux,COMD,14481,4,OUBEAUX,Oubeaux,Les Oubeaux
 32,2017-01-01,COM,14489,1,OUVILLE LA BIEN TOURNEE,Ouville-la-Bien-Tournée,Ouville-la-Bien-Tournée,COMD,14489,1,OUVILLE LA BIEN TOURNEE,Ouville-la-Bien-Tournée,Ouville-la-Bien-Tournée
 32,2017-01-01,COM,14493,0,PERCY EN AUGE,Percy-en-Auge,Percy-en-Auge,COMD,14493,0,PERCY EN AUGE,Percy-en-Auge,Percy-en-Auge
@@ -2140,7 +2130,6 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 32,2017-01-01,COM,14596,0,SAINT JEAN DES ESSARTIERS,Saint-Jean-des-Essartiers,Saint-Jean-des-Essartiers,COM,14672,0,VAL DE DROME,Val de Drôme,Val de Drôme
 32,2017-01-01,COM,14672,0,SEPT VENTS,Sept-Vents,Sept-Vents,COM,14672,0,VAL DE DROME,Val de Drôme,Val de Drôme
 32,2017-01-01,COM,14672,0,SEPT VENTS,Sept-Vents,Sept-Vents,COMD,14672,0,SEPT VENTS,Sept-Vents,Sept-Vents
-70,2017-01-01,COMA,14673,0,SERMENTOT,Sermentot,Sermentot,COMD,14673,0,SERMENTOT,Sermentot,Sermentot
 32,2017-01-01,COM,14688,0,THIEVILLE,Thiéville,Thiéville,COMD,14688,0,THIEVILLE,Thiéville,Thiéville
 32,2017-01-01,COM,14690,0,TIERCEVILLE,Tierceville,Tierceville,COMD,14690,0,TIERCEVILLE,Tierceville,Tierceville
 32,2017-01-01,COM,14695,0,TORTEVAL QUESNAY,Torteval-Quesnay,Torteval-Quesnay,COMD,14695,0,TORTEVAL QUESNAY,Torteval-Quesnay,Torteval-Quesnay
@@ -2687,6 +2676,7 @@ MOD,DATE_EFF,TYPECOM_AV,COM_AV,TNCC_AV,NCC_AV,NCCENR_AV,LIBELLE_AV,TYPECOM_AP,CO
 32,2017-01-01,COM,50131,0,CHERENCE LE ROUSSEL,Chérencé-le-Roussel,Chérencé-le-Roussel,COMD,50131,0,CHERENCE LE ROUSSEL,Chérencé-le-Roussel,Chérencé-le-Roussel
 32,2017-01-01,COM,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire,COM,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire
 32,2017-01-01,COMD,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire,COM,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire
+32,2017-01-01,COMD,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire,COMD,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire
 32,2017-01-01,COMD,50319,2,MESNIL RAOULT,Mesnil-Raoult,Le Mesnil-Raoult,COM,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire
 32,2017-01-01,COM,50608,0,TROISGOTS,Troisgots,Troisgots,COM,50139,0,CONDE SUR VIRE,Condé-sur-Vire,Condé-sur-Vire
 32,2017-01-01,COMD,50153,0,CRETTEVILLE,Cretteville,Cretteville,COMD,50153,0,CRETTEVILLE,Cretteville,Cretteville
