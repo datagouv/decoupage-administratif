@@ -131,10 +131,12 @@ function expandWithAnciensCodes(communes, historiqueCommunes) {
 
     const key = `${getPrefix(commune)}-${commune.code}`
     const entreeHistorique = historiqueCommunesActuellesIndex[key]
-    const codes = getAllCodes(entreeHistorique)
-    codes.delete(commune.code)
-    if (codes.size > 0) {
-      commune.anciensCodes = [...codes]
+    if (entreeHistorique != undefined) {
+      const codes = getAllCodes(entreeHistorique)
+      codes.delete(commune.code)
+      if (codes.size > 0) {
+        commune.anciensCodes = [...codes]
+      }
     }
   })
 }
