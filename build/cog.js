@@ -137,6 +137,8 @@ function expandWithAnciensCodes(communes, historiqueCommunes) {
       if (codes.size > 0) {
         commune.anciensCodes = [...codes]
       }
+    } else {
+      console.log(`Anomaly: no ${key} found in entreeHistorique`)
     }
   })
 }
