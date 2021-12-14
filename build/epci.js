@@ -13,6 +13,9 @@ async function extractEPCI(path) {
   const [sheet] = await readSheets(path)
   const [columns, ...rows] = sheet.data
   const items = rows.map(row => zipObject(columns, row))
+  const col_names = Object.keys(items[0])
+  const ptot_col_name = col_names.filter(key => key.startsWith('ptot_'))[0]
+  const pmun_col_name = col_names.filter(key => key.startsWith('pmun_'))[0]
   return chain(items)
     .groupBy('siren')
     .map(items => {
@@ -28,8 +31,8 @@ async function extractEPCI(path) {
           code: formatCodeCommune(item.insee),
           siren: formatSiren(item.siren_membre),
           nom: item.nom_membre,
-          populationTotale: item.ptot_2018,
-          populationMunicipale: item.pmun_2018
+          populationTotale: item.ptot_col_name,
+          populationMunicipale: item.pmun_col_name
         }))
       }
     })
