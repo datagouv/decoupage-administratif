@@ -64,7 +64,7 @@ async function buildHistoriqueCommunes(historiqueCommunes) {
 async function main() {
   await remove(join(__dirname, '..', 'data'))
 
-  const population = await extractPopulation(getSourceFilePath('population2019.xls.gz'))
+  const population = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
   // const historiqueCommunes = await extractHistoriqueCommunes(
   //   getSourceFilePath('communes.csv'),
   //   getSourceFilePath('mouvements-communes.csv')
