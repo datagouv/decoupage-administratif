@@ -18,13 +18,13 @@
     "build": "node build",
     "lint": "xo",
     "test": "xo",
-    "prepare": "node build"
+    "prepare": "node build",
+    "download-cp-la-poste": "./download-codes-postaux-la-poste.sh"
   },
   "dependencies": {
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "codes-postaux": "^3.5.0",
     "csv-parser": "^2.3.2",
     "fs-extra": "^8.1.0",
     "get-stream": "^5.1.0",

@@ -1,4 +1,4 @@
-const codesPostaux = require('codes-postaux/codes-postaux.json')
+const codesPostaux = require('./../sources/codes-postaux.json')
 const {groupBy, chain} = require('lodash')
 const {MLP_CODES} = require('./mlp')
 
