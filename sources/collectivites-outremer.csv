@@ -8,88 +8,88 @@ code_commune,nom_commune,code_collectivite,nom_collectivite,code_postal,populati
 98413,Archipel des Crozet,984,Terres australes et antarctiques françaises,,
 98414,La Terre-Adélie,984,Terres australes et antarctiques françaises,,
 98415,Îles Éparses de l'océan Indien,984,Terres australes et antarctiques françaises,,
-98611,Alo,986,Wallis et Futuna,,
-98612,Sigave,986,Wallis et Futuna,,
-98613,Uvea,986,Wallis et Futuna,,
-98711,Anaa,987,Polynésie française,,
-98712,Arue,987,Polynésie française,,
-98713,Arutua,987,Polynésie française,,
-98714,Bora-Bora,987,Polynésie française,,
-98715,Faaa,987,Polynésie française,,
-98716,Fakarava,987,Polynésie française,,
-98717,Fangatau,987,Polynésie française,,
-98718,Fatu-Hiva,987,Polynésie française,,
-98719,Gambier,987,Polynésie française,,
-98720,Hao,987,Polynésie française,,
-98721,Hikueru,987,Polynésie française,,
-98722,Hitiaa O Te Ra,987,Polynésie française,,
-98723,Hiva-Oa,987,Polynésie française,,
-98724,Huahine,987,Polynésie française,,
-98725,Mahina,987,Polynésie française,,
-98726,Makemo,987,Polynésie française,,
-98727,Manihi,987,Polynésie française,,
-98728,Maupiti,987,Polynésie française,,
-98729,Moorea-Maiao,987,Polynésie française,,
-98730,Napuka,987,Polynésie française,,
-98731,Nuku-Hiva,987,Polynésie française,,
-98732,Nukutavake,987,Polynésie française,,
-98733,Paea,987,Polynésie française,,
-98734,Papara,987,Polynésie française,,
-98735,Papeete,987,Polynésie française,,
-98736,Pirae,987,Polynésie française,,
-98737,Pukapuka,987,Polynésie française,,
-98738,Punaauia,987,Polynésie française,,
-98739,Raivavae,987,Polynésie française,,
-98740,Rangiroa,987,Polynésie française,,
-98741,Rapa,987,Polynésie française,,
-98742,Reao,987,Polynésie française,,
-98743,Rimatara,987,Polynésie française,,
-98744,Rurutu,987,Polynésie française,,
-98745,Tahaa,987,Polynésie française,,
-98746,Tahuata,987,Polynésie française,,
-98747,Taiarapu-Est,987,Polynésie française,,
-98748,Taiarapu-Ouest,987,Polynésie française,,
-98749,Takaroa,987,Polynésie française,,
-98750,Taputapuatea,987,Polynésie française,,
-98751,Tatakoto,987,Polynésie française,,
-98752,Teva I Uta,987,Polynésie française,,
-98753,Tubuai,987,Polynésie française,,
-98754,Tumaraa,987,Polynésie française,,
-98755,Tureia,987,Polynésie française,,
-98756,Ua-Huka,987,Polynésie française,,
-98757,Ua-Pou,987,Polynésie française,,
-98758,Uturoa,987,Polynésie française,,
-98801,Belep,988,Nouvelle-Calédonie,,
-98802,Bouloupari,988,Nouvelle-Calédonie,,
-98803,Bourail,988,Nouvelle-Calédonie,,
-98804,Canala,988,Nouvelle-Calédonie,,
-98805,Dumbéa,988,Nouvelle-Calédonie,,
-98806,Farino,988,Nouvelle-Calédonie,,
-98807,Hienghène,988,Nouvelle-Calédonie,,
-98808,Houaïlou,988,Nouvelle-Calédonie,,
-98809,L'Île-des-Pins,988,Nouvelle-Calédonie,,
-98810,Kaala-Gomen,988,Nouvelle-Calédonie,,
-98811,Koné,988,Nouvelle-Calédonie,,
-98812,Koumac,988,Nouvelle-Calédonie,,
-98813,La Foa,988,Nouvelle-Calédonie,,
-98814,Lifou,988,Nouvelle-Calédonie,,
-98815,Maré,988,Nouvelle-Calédonie,,
-98816,Moindou,988,Nouvelle-Calédonie,,
-98817,Le Mont-Dore,988,Nouvelle-Calédonie,,
-98818,Nouméa,988,Nouvelle-Calédonie,,
-98819,Ouégoa,988,Nouvelle-Calédonie,,
-98820,Ouvéa,988,Nouvelle-Calédonie,,
-98821,Païta,988,Nouvelle-Calédonie,,
-98822,Poindimié,988,Nouvelle-Calédonie,,
-98823,Ponérihouen,988,Nouvelle-Calédonie,,
-98824,Pouébo,988,Nouvelle-Calédonie,,
-98825,Pouembout,988,Nouvelle-Calédonie,,
-98826,Poum,988,Nouvelle-Calédonie,,
-98827,Poya,988,Nouvelle-Calédonie,,
-98828,Sarraméa,988,Nouvelle-Calédonie,,
-98829,Thio,988,Nouvelle-Calédonie,,
-98830,Touho,988,Nouvelle-Calédonie,,
-98831,Voh,988,Nouvelle-Calédonie,,
-98832,Yaté,988,Nouvelle-Calédonie,,
-98833,Kouaoua,988,Nouvelle-Calédonie,,
-98901,Île de Clipperton,989,Île de Clipperton,,
+98611,Alo,986,Wallis et Futuna,98610,2031
+98612,Sigave,986,Wallis et Futuna,98620,1335
+98613,Uvea,986,Wallis et Futuna,98600,8701
+98711,Anaa,987,Polynésie française,98760|98786|98790,811
+98712,Arue,987,Polynésie française,98701,10243
+98713,Arutua,987,Polynésie française,98761|98762|98785,1664
+98714,Bora-Bora,987,Polynésie française,98730,10549
+98715,Faaa,987,Polynésie française,98704,29506
+98716,Fakarava,987,Polynésie française,98763|98764|98787|98790,1637
+98717,Fangatau,987,Polynésie française,98765|98766,296
+98718,Fatu-Hiva,987,Polynésie française,98740,612
+98719,Gambier,987,Polynésie française,98755|98792|98793,1535
+98720,Hao,987,Polynésie française,98767|98790,1258
+98721,Hikueru,987,Polynésie française,98768|98790,275
+98722,Hitiaa O Te Ra,987,Polynésie française,98705|98706|98707|98708,10033
+98723,Hiva-Oa,987,Polynésie française,98741|98749|98796,2243
+98724,Huahine,987,Polynésie française,98731|98732,6075
+98725,Mahina,987,Polynésie française,98709|98710,14764
+98726,Makemo,987,Polynésie française,98769|98789|98790,1508
+98727,Manihi,987,Polynésie française,98770|98771,1141
+98728,Maupiti,987,Polynésie française,98732,1286
+98729,Moorea-Maiao,987,Polynésie française,98728|98729,17816
+98730,Napuka,987,Polynésie française,98772,284
+98731,Nuku-Hiva,987,Polynésie française,98742|98748|98796,2951
+98732,Nukutavake,987,Polynésie française,98773|98788,295
+98733,Paea,987,Polynésie française,98711,13021
+98734,Papara,987,Polynésie française,98712,11680
+98735,Papeete,987,Polynésie française,98714,26925
+98736,Pirae,987,Polynésie française,98716,14209
+98737,Pukapuka,987,Polynésie française,98774,163
+98738,Punaauia,987,Polynésie française,98703|98718,28103
+98739,Raivavae,987,Polynésie française,98750,903
+98740,Rangiroa,987,Polynésie française,98775|98776|98777|98778|98790,3657
+98741,Rapa,987,Polynésie française,98751|98794,507
+98742,Reao,987,Polynésie française,98779|98780,587
+98743,Rimatara,987,Polynésie française,98752|98795,872
+98744,Rurutu,987,Polynésie française,98753,2466
+98745,Tahaa,987,Polynésie française,98733|98734,5234
+98746,Tahuata,987,Polynésie française,98743,653
+98747,Taiarapu-Est,987,Polynésie française,98719|98720|98721|98722,12701
+98748,Taiarapu-Ouest,987,Polynésie française,98723|98724|98725,8078
+98749,Takaroa,987,Polynésie française,98781|98782|98790,1175
+98750,Taputapuatea,987,Polynésie française,98735,4792
+98751,Tatakoto,987,Polynésie française,98783,259
+98752,Teva I Uta,987,Polynésie française,98726|98727,10254
+98753,Tubuai,987,Polynésie française,98754,2217
+98754,Tumaraa,987,Polynésie française,98735,3721
+98755,Tureia,987,Polynésie française,98784,336
+98756,Ua-Huka,987,Polynésie française,98744|98747,674
+98757,Ua-Pou,987,Polynésie française,98745|98746,2213
+98758,Uturoa,987,Polynésie française,98735,3736
+98801,Belep,988,Nouvelle-Calédonie,98811,867
+98802,Bouloupari,988,Nouvelle-Calédonie,98812,3315
+98803,Bourail,988,Nouvelle-Calédonie,98870,5531
+98804,Canala,988,Nouvelle-Calédonie,98813,3701
+98805,Dumbéa,988,Nouvelle-Calédonie,98835,35873
+98806,Farino,988,Nouvelle-Calédonie,98881,712
+98807,Hienghène,988,Nouvelle-Calédonie,98815,2454
+98808,Houaïlou,988,Nouvelle-Calédonie,98816,3955
+98809,L'Île-des-Pins,988,Nouvelle-Calédonie,98832,2037
+98810,Kaala-Gomen,988,Nouvelle-Calédonie,98817,1803
+98811,Koné,988,Nouvelle-Calédonie,98859,8144
+98812,Koumac,988,Nouvelle-Calédonie,98850,3981
+98813,La Foa,988,Nouvelle-Calédonie,98880,3552
+98814,Lifou,988,Nouvelle-Calédonie,98820,9195
+98815,Maré,988,Nouvelle-Calédonie,98828,5757
+98816,Moindou,988,Nouvelle-Calédonie,98819,681
+98817,Le Mont-Dore,988,Nouvelle-Calédonie,98809,27620
+98818,Nouméa,988,Nouvelle-Calédonie,98800,94285
+98819,Ouégoa,988,Nouvelle-Calédonie,98821,2118
+98820,Ouvéa,988,Nouvelle-Calédonie,98814,3401
+98821,Païta,988,Nouvelle-Calédonie,98889,24563
+98822,Poindimié,988,Nouvelle-Calédonie,98822,5006
+98823,Ponérihouen,988,Nouvelle-Calédonie,98823,2420
+98824,Pouébo,988,Nouvelle-Calédonie,98824,2144
+98825,Pouembout,988,Nouvelle-Calédonie,98825,2752
+98826,Poum,988,Nouvelle-Calédonie,98826,1435
+98827,Poya,988,Nouvelle-Calédonie,98827,2802
+98828,Sarraméa,988,Nouvelle-Calédonie,98882,572
+98829,Thio,988,Nouvelle-Calédonie,98829,2524
+98830,Touho,988,Nouvelle-Calédonie,98831,2380
+98831,Voh,988,Nouvelle-Calédonie,98833,2856
+98832,Yaté,988,Nouvelle-Calédonie,98834,1667
+98833,Kouaoua,988,Nouvelle-Calédonie,98818,1304
+98901,Île de Clipperton,989,Île de Clipperton,98799,

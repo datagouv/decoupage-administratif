@@ -64,7 +64,11 @@ async function buildHistoriqueCommunes(historiqueCommunes) {
 async function main() {
   await remove(join(__dirname, '..', 'data'))
 
-  const population = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
+  const population_hors_mayotte = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
+  const population_mayotte = await extractPopulation(getSourceFilePath('donnees_communes_mayotte.csv'))
+  const population = {
+    communes: {...population_hors_mayotte.communes, ...population_mayotte.communes}
+  }
   // const historiqueCommunes = await extractHistoriqueCommunes(
   //   getSourceFilePath('communes.csv'),
   //   getSourceFilePath('mouvements-communes.csv')
@@ -82,10 +86,6 @@ async function main() {
 }
 
 function shouldWarnPopulation(codeCommune) {
-  if (codeCommune.startsWith('976')) {
-    return false // Mayotte
-  }
-
   if (MLP_CODES.includes(codeCommune)) {
     return false // Paris, Marseille, Lyon
   }
