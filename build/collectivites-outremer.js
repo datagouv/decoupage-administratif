@@ -15,7 +15,11 @@ async function extractCommunesCOM(path) {
     }
 
     if (row.code_postal) {
-      commune.codesPostaux = [row.code_postal]
+      if (row.code_postal.includes('|')) {
+	commune.codesPostaux = row.code_postal.split('|')
+      } else {
+        commune.codesPostaux = [row.code_postal]
+      }
     }
 
     if (row.population) {

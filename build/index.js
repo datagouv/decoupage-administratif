@@ -23,7 +23,7 @@ async function buildArrondissements(arrondissements) {
 }
 
 async function buildCommunes(regions, departements, arrondissements, population, historiqueCommunes) {
-  const data = await extractCommunes(getSourceFilePath('communes-2019.csv.gz'), arrondissements, departements, regions, historiqueCommunes)
+  const data = await extractCommunes(getSourceFilePath('communes.csv'), arrondissements, departements, regions, historiqueCommunes)
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
@@ -52,7 +52,7 @@ async function buildCommunes(regions, departements, arrondissements, population,
 }
 
 async function buildEPCI() {
-  const rows = await extractEPCI(getSourceFilePath('epcicom2020.xlsx'))
+  const rows = await extractEPCI(getSourceFilePath('epcicom.xlsx'))
   await writeData('epci', rows)
 }
 
@@ -64,11 +64,15 @@ async function buildHistoriqueCommunes(historiqueCommunes) {
 async function main() {
   await remove(join(__dirname, '..', 'data'))
 
-  const population = await extractPopulation(getSourceFilePath('population2019.xls.gz'))
-  const historiqueCommunes = await extractHistoriqueCommunes(
-    getSourceFilePath('communes-2019.csv.gz'),
-    getSourceFilePath('mouvements-communes-2019.csv.gz')
-  )
+  const population_hors_mayotte = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
+  const population_mayotte = await extractPopulation(getSourceFilePath('donnees_communes_mayotte.csv'))
+  const population = {
+    communes: {...population_hors_mayotte.communes, ...population_mayotte.communes}
+  }
+  // const historiqueCommunes = await extractHistoriqueCommunes(
+  //   getSourceFilePath('communes.csv'),
+  //   getSourceFilePath('mouvements-communes.csv')
+  // )
   const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
   const departements = await extractDepartements(getSourceFilePath('departements.csv'))
   const regions = await extractRegions(getSourceFilePath('regions.csv'))
@@ -76,16 +80,12 @@ async function main() {
   await buildRegions(regions)
   await buildDepartements(departements)
   await buildArrondissements(arrondissements)
-  await buildCommunes(regions, departements, arrondissements, population.communes, historiqueCommunes)
-  await buildHistoriqueCommunes(historiqueCommunes)
+  await buildCommunes(regions, departements, arrondissements, population.communes/*, historiqueCommunes*/)
+  // await buildHistoriqueCommunes(historiqueCommunes)
   await buildEPCI()
 }
 
 function shouldWarnPopulation(codeCommune) {
-  if (codeCommune.startsWith('976')) {
-    return false // Mayotte
-  }
-
   if (MLP_CODES.includes(codeCommune)) {
     return false // Paris, Marseille, Lyon
   }

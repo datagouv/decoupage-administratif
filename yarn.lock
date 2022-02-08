@@ -469,12 +469,12 @@ codepage@~1.14.0:
     commander "~2.14.1"
     exit-on-epipe "~1.0.1"
 
-codes-postaux@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/codes-postaux/-/codes-postaux-3.1.1.tgz#8df619777ce9033422de40fabb3ed552f5ec64db"
-  integrity sha512-bWBfVQiyFrT+XgUhAf+FoDMfiWkSUKREa6YAbtra49HKigPkjj9RNTWmvxVuwIfV8Oz6B7FxFBjKXUcy2LbpAg==
+codes-postaux@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/codes-postaux/-/codes-postaux-3.5.0.tgz#705e2586dd7c905b775eb03c5460bccfeb4c81af"
+  integrity sha512-qNPG8brCSIXv0Pq4GdgIyK4xumXlXvTUCkRmBNw4WcRYMQqaeMdVPwjwuvgukeYpRh389+EFMecpo1LdewdQDw==
   dependencies:
-    lodash "^4.17.11"
+    lodash "^4.17.21"
 
 collection-visit@^1.0.0:
   version "1.0.0"
@@ -1405,13 +1405,6 @@ graceful-fs@^4.1.6:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-gunzip-stream@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gunzip-stream/-/gunzip-stream-1.0.1.tgz#50db2d9a2a362265633b136dbaad504277401516"
-  integrity sha512-Hkz9Vd0pAf5JqjpGmNX3R9ZYzxLfFyuaq2f5X867Ki0gcZeryI+njWzZlm6UdbFUvQePgXWPHdweSpV9D7UR4Q==
-  dependencies:
-    is-gzip "^2.0.0"
-
 has-flag@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-2.0.0.tgz#e8207af1cc7b30d446cc70b734b5e8be18f88d51"
@@ -1696,11 +1689,6 @@ is-glob@^4.0.1:
   integrity sha512-5G0tKtBTFImOqDnLB2hG6Bp2qcKEFduo4tZu9MT/H6NQv/ghhy30o55ufafxJ/LdH79LLs2Kfrn85TLKyA7BUg==
   dependencies:
     is-extglob "^2.1.1"
-
-is-gzip@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-gzip/-/is-gzip-2.0.0.tgz#f4fed2bbd9f96bf2cb39e19262797fdb15aad933"
-  integrity sha512-jtO4Njg6q58zDo/Pu4027beSZ0VdsZlt8/5Moco6yAg+DIxb5BK/xUYqYG2+MD4+piKldXJNHxRkhEYI2fvrxA==
 
 is-installed-globally@^0.1.0:
   version "0.1.0"
@@ -2034,15 +2022,15 @@ lodash@^4.13.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
-lodash@^4.17.11:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
-
 lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.0.0:
   version "2.2.0"

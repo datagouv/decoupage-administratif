@@ -3,23 +3,23 @@ const {mouvementToCommune} = require('../helpers')
 
 module.exports = function (mouvements, model) {
   const communesMaintenues = mouvements
-    .filter(m => m.typecom_ap !== 'COM')
-    .map(m => mouvementToCommune(m, 'ap'))
+    .filter(m => m.TYPECOM_AP !== 'COM')
+    .map(m => mouvementToCommune(m, 'AP'))
 
   const motif = communesMaintenues.length > 0 ? 'fusion partielle' : 'fusion totale'
 
   chain(mouvements)
-    .filter(m => m.typecom_av === 'COM')
-    .groupBy('com_av')
+    .filter(m => m.TYPECOM_AV === 'COM')
+    .groupBy('COM_AV')
     .forEach(mouvementsComposition => {
       const communeGroupe = model.getCommune({
         type: 'COM',
-        code: mouvementsComposition[0].com_av
+        code: mouvementsComposition[0].COM_AV
       })
-      const ligneChangementNom = mouvementsComposition.find(m => m.typecom_ap === 'COM' && m.com_av === m.com_ap)
+      const ligneChangementNom = mouvementsComposition.find(m => m.TYPECOM_AP === 'COM' && m.COM_AV === m.COM_AP)
       const nouvelleCommuneGroupe = model.createSuccessor(
         communeGroupe,
-        ligneChangementNom ? {nom: ligneChangementNom.libelle_ap, typeLiaison: Number.parseInt(ligneChangementNom.tncc_ap, 10)} : {},
+        ligneChangementNom ? {nom: ligneChangementNom.LIBELLE_AP, typeLiaison: Number.parseInt(ligneChangementNom.TNCC_AP, 10)} : {},
         motif,
         true
       )

@@ -1,30 +1,15 @@
 const {keyBy, zipObject} = require('lodash')
 const {MLP_CODES} = require('./mlp')
-const {readSheets} = require('./util')
-
-function extractCommunes(sheets) {
-  const sheet = sheets.find(s => s.name === 'Communes')
-  const columns = sheet.data[7]
-  const rows = sheet.data.slice(8)
-  return rows
-    .map(row => {
-      const obj = zipObject(columns, row)
-      if (!obj['Code département'] || !obj['Code commune']) {
-        return null
-      }
-
-      return {
-        codeCommune: obj['Code département'].substr(0, 2) + obj['Code commune'],
-        populationMunicipale: obj['Population municipale']
-      }
-    })
-    .filter(Boolean)
-}
+const {readSheets, readCsvFile} = require('./util')
 
 async function extractPopulation(path) {
-  const sheets = await readSheets(path)
+  const rows = await readCsvFile(path, { separator: ';'})
+  const refactoredRows = rows.map(commune => ({
+    codeCommune: commune.COM,
+    populationMunicipale: Number(commune.PMUN.replace(' ', ''))
+  }))
   return {
-    communes: keyBy(extractCommunes(sheets), 'codeCommune')
+    communes: keyBy(refactoredRows, 'codeCommune')
   }
 }
 

@@ -10,11 +10,11 @@ async function extractDepartements(path) {
 
   return rows.map(row => {
     return {
-      code: row.dep,
-      region: row.reg,
-      chefLieu: row.cheflieu,
-      nom: row.libelle,
-      typeLiaison: parseTypeLiaison(row.tncc)
+      code: row.DEP,
+      region: row.REG,
+      chefLieu: row.CHEFLIEU,
+      nom: row.LIBELLE,
+      typeLiaison: parseTypeLiaison(row.TNCC)
     }
   })
 }
@@ -24,10 +24,10 @@ async function extractRegions(path) {
 
   return rows.map(row => {
     return {
-      code: row.reg,
-      chefLieu: row.cheflieu,
-      nom: row.libelle,
-      typeLiaison: parseTypeLiaison(row.tncc)
+      code: row.REG,
+      chefLieu: row.CHEFLIEU,
+      nom: row.LIBELLE,
+      typeLiaison: parseTypeLiaison(row.TNCC)
     }
   })
 }
@@ -37,12 +37,12 @@ async function extractArrondissements(path) {
 
   return rows.map(row => {
     return {
-      code: row.arr,
-      departement: row.dep,
-      region: row.reg,
-      chefLieu: row.cheflieu,
-      nom: row.libelle,
-      typeLiaison: parseTypeLiaison(row.tncc)
+      code: row.ARR,
+      departement: row.DEP,
+      region: row.REG,
+      chefLieu: row.CHEFLIEU,
+      nom: row.LIBELLE,
+      typeLiaison: parseTypeLiaison(row.TNCC)
     }
   })
 }
@@ -71,32 +71,32 @@ async function extractCommunes(path, arrondissements, departements, regions, his
 
   const communes = rows.map(row => {
     const commune = {
-      code: row.com,
-      nom: row.libelle,
-      typeLiaison: parseTypeLiaison(row.tncc)
+      code: row.COM,
+      nom: row.LIBELLE,
+      typeLiaison: parseTypeLiaison(row.TNCC)
     }
 
-    if (row.typecom === 'COM') {
-      commune.arrondissement = row.arr
-      commune.departement = row.dep
-      commune.region = row.reg
+    if (row.TYPECOM === 'COM') {
+      commune.arrondissement = row.ARR
+      commune.departement = row.DEP
+      commune.region = row.REG
       commune.type = 'commune-actuelle'
       commune.rangChefLieu = getRangChefLieu(row.com, chefsLieuxArrondissement, chefsLieuxDepartement, chefsLieuxRegion)
     }
 
-    if (row.typecom === 'COMA') {
+    if (row.TYPECOM === 'COMA') {
       commune.type = 'commune-associee'
-      commune.chefLieu = row.comparent
+      commune.chefLieu = row.COMPARENT
     }
 
-    if (row.typecom === 'COMD') {
+    if (row.TYPECOM === 'COMD') {
       commune.type = 'commune-deleguee'
-      commune.chefLieu = row.comparent
+      commune.chefLieu = row.COMPARENT
     }
 
-    if (row.typecom === 'ARM') {
+    if (row.TYPECOM === 'ARM') {
       commune.type = 'arrondissement-municipal'
-      commune.commune = row.comparent
+      commune.commune = row.COMPARENT
     }
 
     return commune
@@ -113,7 +113,9 @@ async function extractCommunes(path, arrondissements, departements, regions, his
     }
   })
 
-  expandWithAnciensCodes(communes, historiqueCommunes)
+  if (historiqueCommunes) {
+    expandWithAnciensCodes(communes, historiqueCommunes)
+  }
 
   return communes
 }
