@@ -3,7 +3,6 @@
 Données concernant le découpage administratif français, au format JSON.
 
 - Communes
-- Historique des communes depuis 1943
 - Arrondissements
 - Départements
 - Régions
@@ -26,7 +25,6 @@ const communes = require('@etalab/decoupage-administratif/data/communes.json')
 const departements = require('@etalab/decoupage-administratif/data/departements.json')
 const regions = require('@etalab/decoupage-administratif/data/regions.json')
 const arrondissements = require('@etalab/decoupage-administratif/data/arrondissements.json')
-const historiqueCommunes = require('@etalab/decoupage-administratif/data/historique-communes.json')
 ```
 
 ## Sources
