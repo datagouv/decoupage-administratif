@@ -1,6 +1,6 @@
 {
   "name": "@etalab/decoupage-administratif",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API JavaScript permettant d'interroger le découpage administratif français",
   "main": ".",
   "repository": "https://github.com/etalab/decoupage-administratif",
@@ -21,8 +21,7 @@
     "prepare": "node build",
     "download-cp-la-poste": "./download-codes-postaux-la-poste.sh"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "csv-parser": "^2.3.2",
     "fs-extra": "^8.1.0",
