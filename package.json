@@ -22,12 +22,12 @@
     "download-cp-la-poste": "./download-codes-postaux-la-poste.sh"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "csv-parser": "^2.3.2",
     "fs-extra": "^8.1.0",
     "get-stream": "^5.1.0",
+    "lodash": "^4.17.15",
     "node-xlsx": "^0.15.0",
     "pumpify": "^2.0.1",
     "xo": "^0.25.3"
