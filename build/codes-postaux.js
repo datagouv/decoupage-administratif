@@ -1,5 +1,5 @@
 const {groupBy, chain} = require('lodash')
-const codesPostaux = require('./../sources/codes-postaux.json')
+const codesPostaux = require('./../sources/codes-postaux-with-fix.json')
 const {MLP_CODES} = require('./mlp')
 
 const codesPostauxIndex = groupBy(codesPostaux, 'codeCommune')
