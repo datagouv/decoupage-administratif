@@ -63,7 +63,7 @@ function getRangChefLieu(codeCommune, chefsLieuxArrondissement, chefsLieuxDepart
   return 0
 }
 
-async function extractCommunes(path, arrondissements, departements, regions, historiqueCommunes) {
+async function extractCommunes(path, arrondissements, departements, regions) {
   const rows = await readCsvFile(path)
   const chefsLieuxRegion = regions.map(e => e.chefLieu)
   const chefsLieuxDepartement = departements.map(r => r.chefLieu)
@@ -113,56 +113,7 @@ async function extractCommunes(path, arrondissements, departements, regions, his
     }
   })
 
-  if (historiqueCommunes) {
-    expandWithAnciensCodes(communes, historiqueCommunes)
-  }
-
   return communes
-}
-
-function expandWithAnciensCodes(communes, historiqueCommunes) {
-  const historiqueCommunesActuelles = historiqueCommunes
-    .filter(h => ['COMA', 'COMD', 'COM'].includes(h.type) && !h.dateFin)
-
-  const historiqueCommunesActuellesIndex = keyBy(historiqueCommunesActuelles, h => `${h.type}-${h.code}`)
-
-  communes.forEach(commune => {
-    if (commune.type === 'arrondissement-municipal') {
-      return
-    }
-
-    const key = `${getPrefix(commune)}-${commune.code}`
-    const entreeHistorique = historiqueCommunesActuellesIndex[key]
-    const codes = getAllCodes(entreeHistorique)
-    codes.delete(commune.code)
-    if (codes.size > 0) {
-      commune.anciensCodes = [...codes]
-    }
-  })
-}
-
-function getPrefix(commune) {
-  if (commune.type === 'commune-actuelle') {
-    return 'COM'
-  }
-
-  if (commune.type === 'commune-deleguee') {
-    return 'COMD'
-  }
-
-  if (commune.type === 'commune-associee') {
-    return 'COMA'
-  }
-}
-
-function getAllCodes(historiqueRecord, acc = new Set()) {
-  acc.add(historiqueRecord.code)
-
-  if (!historiqueRecord.predecesseur) {
-    return acc
-  }
-
-  return getAllCodes(historiqueRecord.predecesseur, acc)
 }
 
 module.exports = {extractDepartements, extractRegions, extractArrondissements, extractCommunes}

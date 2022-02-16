@@ -1,9 +1,9 @@
-const {keyBy, zipObject} = require('lodash')
+const {keyBy} = require('lodash')
 const {MLP_CODES} = require('./mlp')
-const {readSheets, readCsvFile} = require('./util')
+const {readCsvFile} = require('./util')
 
 async function extractPopulation(path) {
-  const rows = await readCsvFile(path, { separator: ';'})
+  const rows = await readCsvFile(path, {separator: ';'})
   const refactoredRows = rows.map(commune => ({
     codeCommune: commune.COM,
     populationMunicipale: Number(commune.PMUN.replace(' ', ''))
