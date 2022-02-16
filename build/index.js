@@ -58,10 +58,10 @@ async function buildEPCI() {
 async function main() {
   await remove(join(__dirname, '..', 'data'))
 
-  const population_hors_mayotte = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
-  const population_mayotte = await extractPopulation(getSourceFilePath('donnees_communes_mayotte.csv'))
+  const populationHorsMayotte = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
+  const populationMayotte = await extractPopulation(getSourceFilePath('donnees_communes_mayotte.csv'))
   const population = {
-    communes: {...population_hors_mayotte.communes, ...population_mayotte.communes}
+    communes: {...populationHorsMayotte.communes, ...populationMayotte.communes}
   }
   const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
   const departements = await extractDepartements(getSourceFilePath('departements.csv'))

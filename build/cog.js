@@ -116,18 +116,4 @@ async function extractCommunes(path, arrondissements, departements, regions) {
   return communes
 }
 
-function getPrefix(commune) {
-  if (commune.type === 'commune-actuelle') {
-    return 'COM'
-  }
-
-  if (commune.type === 'commune-deleguee') {
-    return 'COMD'
-  }
-
-  if (commune.type === 'commune-associee') {
-    return 'COMA'
-  }
-}
-
 module.exports = {extractDepartements, extractRegions, extractArrondissements, extractCommunes}
