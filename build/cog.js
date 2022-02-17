@@ -105,6 +105,7 @@ function computeAnciensCodesCommunes(communesRows, mouvementsRows) {
   return invertBy(successorMapping)
 }
 
+/* eslint-disable max-params */
 async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissements, departements, regions) {
   const communesRows = await readCsvFile(communesPath)
   const chefsLieuxRegion = regions.map(e => e.chefLieu)
@@ -161,5 +162,6 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
 
   return communes
 }
+/* eslint-enable max-params */
 
 module.exports = {extractDepartements, extractRegions, extractArrondissements, extractCommunes}
