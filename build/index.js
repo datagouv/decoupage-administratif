@@ -22,7 +22,13 @@ async function buildArrondissements(arrondissements) {
 }
 
 async function buildCommunes(regions, departements, arrondissements, population) {
-  const data = await extractCommunes(getSourceFilePath('communes.csv'), arrondissements, departements, regions)
+  const data = await extractCommunes(
+    getSourceFilePath('communes.csv'),
+    getSourceFilePath('mouvements-communes.csv'),
+    arrondissements,
+    departements,
+    regions
+  )
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
