@@ -1,4 +1,4 @@
-const {keyBy} = require('lodash')
+const {keyBy, invertBy} = require('lodash')
 const {readCsvFile} = require('./util')
 
 function parseTypeLiaison(TNCC) {
@@ -63,13 +63,58 @@ function getRangChefLieu(codeCommune, chefsLieuxArrondissement, chefsLieuxDepart
   return 0
 }
 
-async function extractCommunes(path, arrondissements, departements, regions) {
-  const rows = await readCsvFile(path)
+function computeAnciensCodesCommunes(communesRows, mouvementsRows) {
+  const reversedMouvementsRows = [...mouvementsRows].reverse()
+
+  const communesActuelles = new Set(
+    communesRows
+      .filter(c => c.TYPECOM === 'COM' || c.TYPECOM === 'ARM')
+      .map(c => c.COM)
+  )
+
+  const successorMapping = {}
+
+  reversedMouvementsRows
+    .filter(m => m.TYPECOM_AV === 'COM' && m.TYPECOM_AP === 'COM' && m.COM_AV !== m.COM_AP)
+    .forEach(m => {
+      if (communesActuelles.has(m.COM_AV)) {
+        return
+      }
+
+      successorMapping[m.COM_AV] = m.COM_AP
+    })
+
+  function getSuccessor(codeCommune) {
+    if (communesActuelles.has(codeCommune)) {
+      return codeCommune
+    }
+
+    const successor = successorMapping[codeCommune]
+
+    if (!successor) {
+      throw new Error('Successeur inconnu pour le code ' + codeCommune)
+    }
+
+    return getSuccessor(successor)
+  }
+
+  for (const codeCommune of Object.keys(successorMapping)) {
+    successorMapping[codeCommune] = getSuccessor(codeCommune)
+  }
+
+  return invertBy(successorMapping)
+}
+
+async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissements, departements, regions) {
+  const communesRows = await readCsvFile(communesPath)
   const chefsLieuxRegion = regions.map(e => e.chefLieu)
   const chefsLieuxDepartement = departements.map(r => r.chefLieu)
   const chefsLieuxArrondissement = arrondissements.map(r => r.chefLieu)
 
-  const communes = rows.map(row => {
+  const mouvementsRows = await readCsvFile(mouvementsCommunesPath)
+  const anciensCodesIndex = computeAnciensCodesCommunes(communesRows, mouvementsRows)
+
+  const communes = communesRows.map(row => {
     const commune = {
       code: row.COM,
       nom: row.LIBELLE,
@@ -82,6 +127,7 @@ async function extractCommunes(path, arrondissements, departements, regions) {
       commune.region = row.REG
       commune.type = 'commune-actuelle'
       commune.rangChefLieu = getRangChefLieu(row.com, chefsLieuxArrondissement, chefsLieuxDepartement, chefsLieuxRegion)
+      commune.anciensCodes = anciensCodesIndex[row.COM]
     }
 
     if (row.TYPECOM === 'COMA') {
