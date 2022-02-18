@@ -1,4 +1,4 @@
-const {groupBy, chain} = require('lodash')
+const {groupBy, chain, uniq} = require('lodash')
 const codesPostaux = require('./../sources/codes-postaux-with-fix.json')
 const {MLP_CODES} = require('./mlp')
 
@@ -6,7 +6,7 @@ const codesPostauxIndex = groupBy(codesPostaux, 'codeCommune')
 
 function getCodesPostaux(codeCommune) {
   if (codeCommune in codesPostauxIndex) {
-    return Array.from(new Set(codesPostauxIndex[codeCommune].map(i => i.codePostal)))
+    return uniq(codesPostauxIndex[codeCommune].map(i => i.codePostal))
   }
 
   return []
