@@ -1,4 +1,4 @@
-const {groupBy, chain} = require('lodash')
+const {groupBy, chain, uniq} = require('lodash')
 const codesPostaux = require('./../sources/codes-postaux-with-fix.json')
 const {MLP_CODES} = require('./mlp')
 
@@ -6,13 +6,7 @@ const codesPostauxIndex = groupBy(codesPostaux, 'codeCommune')
 
 function getCodesPostaux(codeCommune) {
   if (codeCommune in codesPostauxIndex) {
-    return codesPostauxIndex[codeCommune].map(i => i.codePostal)
-  }
-
-  // Cas spécifique de la commune de Suzan (non présente dans le fichier des codes postaux)
-  // Source Wikidata (https://www.wikidata.org/wiki/Q1363310)
-  if (codeCommune === '09304') {
-    return ['09240']
+    return uniq(codesPostauxIndex[codeCommune].map(i => i.codePostal))
   }
 
   return []
