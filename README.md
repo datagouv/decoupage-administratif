@@ -29,13 +29,14 @@ const arrondissements = require('@etalab/decoupage-administratif/data/arrondisse
 
 ## Millésimes et versions de package
 
-Vous avez besoin de données:
+Vous avez besoin de données selon une année? Voici un tableau récapitulatif pour choisir:
 
-- 2022, prendre la version 2.0.0 `npm install @etalab/decoupage-administratif@2.0.0`
-- 2021, prendre la version 1.1.1 `npm install @etalab/decoupage-administratif@1.1.1`
-- 2020, non disponible, sauf les EPCI 2020 via la version 0.8
-- 2019, prendre la version 0.7 `npm install @etalab/decoupage-administratif@0.8`
-
+| Année | Version du package                        | NPM                                               | Yarn                                               |
+|-------|-------------------------------------------|---------------------------------------------------|----------------------------------------------------|
+| 2022  | 2.0.0                                     | `npm install @etalab/decoupage-administratif@2.0.0` | `yarn install @etalab/decoupage-administratif@2.0.0` |
+| 2021  | 1.1.0                                     | `npm install @etalab/decoupage-administratif@1.1.1` | `yarn install @etalab/decoupage-administratif@1.1.1` |
+| 2020  | Non disponible, sauf EPCI 2020 avec 0.8.0 | `npm install @etalab/decoupage-administratif@0.8`   | `yarn install @etalab/decoupage-administratif@0.8`   |
+| 2019  | 0.7                                       | `npm install @etalab/decoupage-administratif@0.7`   | `yarn install @etalab/decoupage-administratif@0.7`   |
 
 ## Sources
 
