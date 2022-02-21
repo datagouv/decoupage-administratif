@@ -27,6 +27,16 @@ const regions = require('@etalab/decoupage-administratif/data/regions.json')
 const arrondissements = require('@etalab/decoupage-administratif/data/arrondissements.json')
 ```
 
+## Millésimes et versions de package
+
+Vous avez besoin de données:
+
+- 2022, prendre la version 2.0.0 `npm install @etalab/decoupage-administratif@2.0.0`
+- 2021, prendre la version 1.1.1 `npm install @etalab/decoupage-administratif@1.1.1`
+- 2020, non disponible, sauf les EPCI 2020 via la version 0.8
+- 2019, prendre la version 0.7 `npm install @etalab/decoupage-administratif@0.8`
+
+
 ## Sources
 
 * [Code Officiel Géographique](https://insee.fr/fr/information/2560452) de l'INSEE
