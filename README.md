@@ -20,12 +20,27 @@ yarn add @etalab/decoupage-administratif
 
 ## Utilisation
 
+### Node
+
 ```js
 const communes = require('@etalab/decoupage-administratif/data/communes.json')
 const departements = require('@etalab/decoupage-administratif/data/departements.json')
 const regions = require('@etalab/decoupage-administratif/data/regions.json')
 const arrondissements = require('@etalab/decoupage-administratif/data/arrondissements.json')
+const epci = require('@etalab/decoupage-administratif/data/epci.json')
 ```
+
+### via des URLs
+
+Pour la dernière version
+
+- Communes https://unpkg.com/@etalab/decoupage-administratif/data/communes.json
+- Départements https://unpkg.com/@etalab/decoupage-administratif/data/departements.json
+- Régions https://unpkg.com/@etalab/decoupage-administratif/data/regions.json
+- Arrondissements https://unpkg.com/@etalab/decoupage-administratif/data/arrondissements.json
+- EPCI https://unpkg.com/@etalab/decoupage-administratif/data/epci.json
+
+Il est possible de rajouter une version. Pour les EPCI 2021, par exemple https://unpkg.com/@etalab/decoupage-administratif@1.1.1/data/epci.json (voir le lien millésime et version de packages)
 
 ## Millésimes et versions de package
 
@@ -34,7 +49,7 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 | Année | Version du package                        | NPM                                               | Yarn                                               |
 |-------|-------------------------------------------|---------------------------------------------------|----------------------------------------------------|
 | 2022  | 2.0.0                                     | `npm install @etalab/decoupage-administratif@2.0.0` | `yarn install @etalab/decoupage-administratif@2.0.0` |
-| 2021  | 1.1.0                                     | `npm install @etalab/decoupage-administratif@1.1.1` | `yarn install @etalab/decoupage-administratif@1.1.1` |
+| 2021  | 1.1.1                                     | `npm install @etalab/decoupage-administratif@1.1.1` | `yarn install @etalab/decoupage-administratif@1.1.1` |
 | 2020  | Non disponible, sauf EPCI 2020 avec 0.8.0 | `npm install @etalab/decoupage-administratif@0.8`   | `yarn install @etalab/decoupage-administratif@0.8`   |
 | 2019  | 0.7                                       | `npm install @etalab/decoupage-administratif@0.7`   | `yarn install @etalab/decoupage-administratif@0.7`   |
 
