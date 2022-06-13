@@ -14,7 +14,8 @@ async function extractDepartements(path) {
       region: row.REG,
       chefLieu: row.CHEFLIEU,
       nom: row.LIBELLE,
-      typeLiaison: parseTypeLiaison(row.TNCC)
+      typeLiaison: parseTypeLiaison(row.TNCC),
+      zone: row.ZONE ? row.ZONE : row.DEP.length > 2 ? 'dom' : 'metro'
     }
   })
 }
@@ -27,7 +28,8 @@ async function extractRegions(path) {
       code: row.REG,
       chefLieu: row.CHEFLIEU,
       nom: row.LIBELLE,
-      typeLiaison: parseTypeLiaison(row.TNCC)
+      typeLiaison: parseTypeLiaison(row.TNCC),
+      zone: row.ZONE ? row.ZONE : ['01', '02', '03', '04', '06'].includes(row.REG) ? 'dom' : 'metro'
     }
   })
 }
@@ -119,7 +121,8 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
     const commune = {
       code: row.COM,
       nom: row.LIBELLE,
-      typeLiaison: parseTypeLiaison(row.TNCC)
+      typeLiaison: parseTypeLiaison(row.TNCC),
+      zone: row.zone ? row.zone : row.DEP.length > 2 ? 'dom' : 'metro'
     }
 
     if (row.TYPECOM === 'COM') {

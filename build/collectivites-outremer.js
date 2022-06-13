@@ -7,10 +7,9 @@ async function extractCommunesCOM(path) {
     const commune = {
       code: row.code_commune,
       nom: row.nom_commune,
-      collectiviteOutremer: {
-        code: row.code_collectivite,
-        nom: row.nom_collectivite
-      },
+      departement: row.code_collectivite,
+      region: row.code_collectivite,
+      zone: 'com',
       type: 'commune-actuelle'
     }
 
