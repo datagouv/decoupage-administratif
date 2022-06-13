@@ -70,12 +70,12 @@ async function main() {
     communes: {...populationHorsMayotte.communes, ...populationMayotte.communes}
   }
   const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
-  const departements_metro_and_dom = await extractDepartements(getSourceFilePath('departements.csv'))
-  const departements_com = await extractDepartements(getSourceFilePath('departements-outremer.csv'))
-  const departements = [...departements_metro_and_dom, ...departements_com]
-  const regions_metro_and_dom = await extractRegions(getSourceFilePath('regions.csv'))
-  const regions_com = await extractRegions(getSourceFilePath('regions-outremer.csv'))
-  const regions = [...regions_metro_and_dom, ...regions_com]
+  const departementsMetroAndDom = await extractDepartements(getSourceFilePath('departements.csv'))
+  const departementsCom = await extractDepartements(getSourceFilePath('departements-outremer.csv'))
+  const departements = [...departementsMetroAndDom, ...departementsCom]
+  const regionsMetroAndDom = await extractRegions(getSourceFilePath('regions.csv'))
+  const regionsCom = await extractRegions(getSourceFilePath('regions-outremer.csv'))
+  const regions = [...regionsMetroAndDom, ...regionsCom]
 
   await buildRegions(regions)
   await buildDepartements(departements)

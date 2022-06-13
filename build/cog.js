@@ -9,13 +9,22 @@ async function extractDepartements(path) {
   const rows = await readCsvFile(path)
 
   return rows.map(row => {
+    let zone
+    if (row.ZONE) {
+      zone = row.ZONE
+    } else if (row.DEP.length > 2) {
+      zone = 'dom'
+    } else {
+      zone = 'metro'
+    }
+
     return {
       code: row.DEP,
       region: row.REG,
       chefLieu: row.CHEFLIEU,
       nom: row.LIBELLE,
       typeLiaison: parseTypeLiaison(row.TNCC),
-      zone: row.ZONE ? row.ZONE : row.DEP.length > 2 ? 'dom' : 'metro'
+      zone
     }
   })
 }
@@ -24,12 +33,21 @@ async function extractRegions(path) {
   const rows = await readCsvFile(path)
 
   return rows.map(row => {
+    let zone
+    if (row.ZONE) {
+      zone = row.ZONE
+    } else if (['01', '02', '03', '04', '06'].includes(row.REG)) {
+      zone = 'dom'
+    } else {
+      zone = 'metro'
+    }
+
     return {
       code: row.REG,
       chefLieu: row.CHEFLIEU,
       nom: row.LIBELLE,
       typeLiaison: parseTypeLiaison(row.TNCC),
-      zone: row.ZONE ? row.ZONE : ['01', '02', '03', '04', '06'].includes(row.REG) ? 'dom' : 'metro'
+      zone
     }
   })
 }
@@ -118,11 +136,20 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
   const anciensCodesIndex = computeAnciensCodesCommunes(communesRows, mouvementsRows)
 
   const communes = communesRows.map(row => {
+    let zone
+    if (row.zone) {
+      zone = row.zone
+    } else if (row.DEP.length > 2) {
+      zone = 'dom'
+    } else {
+      zone = 'metro'
+    }
+
     const commune = {
       code: row.COM,
       nom: row.LIBELLE,
       typeLiaison: parseTypeLiaison(row.TNCC),
-      zone: row.zone ? row.zone : row.DEP.length > 2 ? 'dom' : 'metro'
+      zone
     }
 
     if (row.TYPECOM === 'COM') {
