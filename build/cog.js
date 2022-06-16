@@ -13,7 +13,7 @@ async function extractDepartements(path) {
     if (row.ZONE) {
       zone = row.ZONE
     } else if (row.DEP.length > 2) {
-      zone = 'dom'
+      zone = 'drom'
     } else {
       zone = 'metro'
     }
@@ -37,7 +37,7 @@ async function extractRegions(path) {
     if (row.ZONE) {
       zone = row.ZONE
     } else if (['01', '02', '03', '04', '06'].includes(row.REG)) {
-      zone = 'dom'
+      zone = 'drom'
     } else {
       zone = 'metro'
     }
@@ -140,7 +140,7 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
     if (row.zone) {
       zone = row.zone
     } else if (row.DEP.length > 2) {
-      zone = 'dom'
+      zone = 'drom'
     } else {
       zone = 'metro'
     }
