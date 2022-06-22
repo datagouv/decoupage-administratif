@@ -5,7 +5,7 @@ const {extractEPCI} = require('./epci')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
-const {extractCommunesCOM} = require('./collectivites-outremer')
+const {extractCommunesCOM, generateDepartementsAndRegionsCOM} = require('./collectivites-outremer')
 const {extractDepartements, extractRegions, extractArrondissements, extractCommunes} = require('./cog')
 const {writeData, getSourceFilePath} = require('./util')
 
@@ -70,8 +70,11 @@ async function main() {
     communes: {...populationHorsMayotte.communes, ...populationMayotte.communes}
   }
   const arrondissements = await extractArrondissements(getSourceFilePath('arrondissements.csv'))
-  const departements = await extractDepartements(getSourceFilePath('departements.csv'))
-  const regions = await extractRegions(getSourceFilePath('regions.csv'))
+  const departementsMetroAndDrom = await extractDepartements(getSourceFilePath('departements.csv'))
+  const [departementsCom, regionsCom] = await generateDepartementsAndRegionsCOM(getSourceFilePath('collectivites-outremer.csv'))
+  const departements = [...departementsMetroAndDrom, ...departementsCom]
+  const regionsMetroAndDrom = await extractRegions(getSourceFilePath('regions.csv'))
+  const regions = [...regionsMetroAndDrom, ...regionsCom]
 
   await buildRegions(regions)
   await buildDepartements(departements)
