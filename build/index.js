@@ -38,7 +38,7 @@ async function buildCommunes(regions, departements, arrondissements, population)
         commune.siren = String(inseeSirenMatching[commune.code].siren)
       }
 
-      const codesPostaux = getCodesPostaux()
+      const codesPostaux = getCodesPostaux(commune.code)
       if (codesPostaux.length > 0) {
         commune.codesPostaux = codesPostaux
       } else if (shouldWarnCodePostal(commune.code)) {
