@@ -1,14 +1,14 @@
 const {readCsvFile} = require('./util')
 
 const chefLieuCOM = {
-  '975': '97502',
-  '977': '97701',
-  '978': '97801',
-  '984': '97502',
-  '986': '98613',
-  '987': '98735',
-  '988': '98818',
-  '989': '98901'
+  975: '97502',
+  977: '97701',
+  978: '97801',
+  984: '97502',
+  986: '98613',
+  987: '98735',
+  988: '98818',
+  989: '98901'
 }
 
 async function extractCommunesCOM(path) {
@@ -45,7 +45,7 @@ async function generateDepartementsAndRegionsCOM(path) {
 
   const departements = Object.values(rows.reduce((acc, curr) => {
     if (!(curr.code_collectivite in acc)) {
-        acc[curr.code_collectivite] = {
+      acc[curr.code_collectivite] = {
         code: curr.code_collectivite,
         region: curr.code_collectivite,
         chefLieu: chefLieuCOM[curr.code_collectivite],
@@ -54,13 +54,15 @@ async function generateDepartementsAndRegionsCOM(path) {
         zone: 'com'
       }
     }
+
     return acc
   }, {}))
 
   const regions = JSON.parse(JSON.stringify(departements)).map(el => {
     delete el.region
     return el
-  });
+  })
+
   return [departements, regions]
 }
 
