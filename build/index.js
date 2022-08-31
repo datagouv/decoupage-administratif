@@ -2,6 +2,7 @@
 const {join} = require('path')
 const {remove} = require('fs-extra')
 const {extractEPCI} = require('./epci')
+const {extractSirenInsee} = require('./correspondances-insee-siren-communes')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
@@ -22,6 +23,7 @@ async function buildArrondissements(arrondissements) {
 }
 
 async function buildCommunes(regions, departements, arrondissements, population) {
+  const inseeSirenMatching = await extractSirenInsee(getSourceFilePath('banatic_siren_insee.xlsx'))
   const data = await extractCommunes(
     getSourceFilePath('communes.csv'),
     getSourceFilePath('mouvements-communes.csv'),
@@ -32,7 +34,11 @@ async function buildCommunes(regions, departements, arrondissements, population)
 
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
-      const codesPostaux = getCodesPostaux(commune.code)
+      if (commune.code in inseeSirenMatching) {
+        commune.siren = String(inseeSirenMatching[commune.code].siren)
+      }
+
+      const codesPostaux = getCodesPostaux()
       if (codesPostaux.length > 0) {
         commune.codesPostaux = codesPostaux
       } else if (shouldWarnCodePostal(commune.code)) {
