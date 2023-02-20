@@ -56,7 +56,7 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 ## Sources
 
 * [Code Officiel Géographique](https://insee.fr/fr/information/2560452) de l'INSEE
-* [Liste des EPCI à fiscalité propre](https://www.collectivites-locales.gouv.fr/institutions/liste-et-composition-des-epci-fiscalite-propre) de la DGCL ([url exacte](https://www.collectivites-locales.gouv.fr/files/Accueil/DESL/2022/epcicom2022.xlsx))
+* [Liste des EPCI à fiscalité propre](https://www.collectivites-locales.gouv.fr/institutions/liste-et-composition-des-epci-fiscalite-propre) de la DGCL ([url exacte](https://www.collectivites-locales.gouv.fr/files/Accueil/DESL/2023/epcicom2023.xlsx))
 * [Population légale](https://www.insee.fr/fr/statistiques/6683035?sommaire=6683037) de l'INSEE + [population Mayotte INSEE 2017](https://www.insee.fr/fr/statistiques/3291775?sommaire=2120838) + [population COM](https://www.insee.fr/fr/statistiques/6683025?sommaire=6683037)
 * [Liste des codes postaux](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/) issue des données La Poste. Antérieurement, sous licence ODBL, maintenant en LO
 * [Correspondances communes code SIREN et code INSEE](https://www.banatic.interieur.gouv.fr/V5/fichiers-en-telechargement/fichiers-telech.php) Menu gauche "Table de correspondance code SIREN / Code Insee des communes" ([url exacte](https://www.banatic.interieur.gouv.fr/V5/ressources/documents/document_reference/TableCorrespondanceSirenInsee.zip))
