@@ -133,6 +133,16 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
   const chefsLieuxArrondissement = arrondissements.map(r => r.chefLieu)
 
   const mouvementsRows = await readCsvFile(mouvementsCommunesPath)
+  // Fix issue with wrong length (data with missing leading 0)
+  mouvementsRows.forEach(mvt => {
+    if (mvt.COM_AV.length === 4) {
+      mvt.COM_AV = '0' + mvt.COM_AV
+    }
+
+    if (mvt.COM_AP.length === 4) {
+      mvt.COM_AP = '0' + mvt.COM_AP
+    }
+  })
   const anciensCodesIndex = computeAnciensCodesCommunes(communesRows, mouvementsRows)
 
   const communes = communesRows.map(row => {
