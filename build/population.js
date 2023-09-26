@@ -6,7 +6,8 @@ async function extractPopulation(path) {
   const rows = await readCsvFile(path, {separator: ';'})
   const refactoredRows = rows.map(commune => ({
     codeCommune: `${commune.CODDEP.length === 3 ? commune.CODDEP.slice(0, 2) : commune.CODDEP}${commune.CODCOM}`,
-    populationMunicipale: Number(commune.PMUN.replace(' ', ''))
+    populationMunicipale: Number(commune.PMUN.replace(' ', '')),
+    populationTotale: Number(commune.PTOT.replace(' ', ''))
   }))
   return {
     communes: keyBy(refactoredRows, 'codeCommune')
