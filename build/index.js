@@ -2,6 +2,7 @@
 const {join} = require('path')
 const {remove} = require('fs-extra')
 const {extractEPCI} = require('./epci')
+const {extractEPT} = require('./ept')
 const {extractSirenInsee} = require('./correspondances-insee-siren-communes')
 const {extractPopulation, computeMLPPopulation} = require('./population')
 const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
@@ -60,11 +61,40 @@ async function buildCommunes(regions, departements, arrondissements, population)
   communesCOM.forEach(commune => data.push(commune))
 
   await writeData('communes', data)
+  return data
 }
 
 async function buildEPCI() {
   const rows = await extractEPCI(getSourceFilePath('epcicom.xlsx'))
   await writeData('epci', rows)
+}
+
+async function buildEPT(communes, population) {
+  const rows = await extractEPT(getSourceFilePath('ept.xlsx'))
+  const inseeCommunesWithEpt = rows.reduce((acc, row) => {
+    acc = [...acc, ...row.membres]
+    return acc
+  }, [])
+  const communesWithEpt = communes
+    .filter(commune => inseeCommunesWithEpt.includes(commune.code))
+    .reduce((acc, curr) => {
+      acc[curr.code] = curr
+      return acc
+    }, {})
+  rows.forEach(row => {
+    row.membres = row.membres.map(membre => {
+      return {
+        code: communesWithEpt[membre].code,
+        siren: communesWithEpt[membre].siren,
+        nom: communesWithEpt[membre].nom,
+        populationTotale: population[membre].populationTotale,
+        populationMunicipale: population[membre].populationMunicipale
+      }
+    })
+    row.populationTotale = row.membres.map(membre => membre.populationTotale).reduce((a, b) => a + b, 0)
+    row.populationMunicipale = row.membres.map(membre => membre.populationMunicipale).reduce((a, b) => a + b, 0)
+  })
+  await writeData('ept', rows)
 }
 
 async function main() {
@@ -81,12 +111,12 @@ async function main() {
   const departements = [...departementsMetroAndDrom, ...departementsCom]
   const regionsMetroAndDrom = await extractRegions(getSourceFilePath('regions.csv'))
   const regions = [...regionsMetroAndDrom, ...regionsCom]
-
   await buildRegions(regions)
   await buildDepartements(departements)
   await buildArrondissements(arrondissements)
-  await buildCommunes(regions, departements, arrondissements, population.communes)
+  const communes = await buildCommunes(regions, departements, arrondissements, population.communes)
   await buildEPCI()
+  await buildEPT(communes, population.communes)
 }
 
 function shouldWarnPopulation(codeCommune) {
