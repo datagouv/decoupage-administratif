@@ -13,7 +13,12 @@
 # csvcut -d ';' -c '1-3,5' codes-postaux.csv | csv2json |jq . >| sources/codes-postaux.json
 # jq -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | jq -s . >| sources/codes-postaux-with-fix.json
 # rm "$csv_name"* codes-postaux.csv
-# Useful only if live
-curl "https://datanova.legroupe.laposte.fr/explore/dataset/laposte_hexasmal/download/?format=json&timezone=Europe/Berlin&lang=fr" \
-    | jq '[.[].fields | {"codePostal": .code_postal, "codeCommune": .code_commune_insee, "libelleAcheminement": .libelle_d_acheminement, "nomCommune": .nom_de_la_commune}]' >| sources/codes-postaux.json
+# Useful when need to take latest CSV file
+wget https://datanova.laposte.fr/data-fair/api/v1/datasets/laposte-hexasmal/metadata-attachments/base-officielle-codes-postaux.csv
+sed -i 's/code_commune_insee/codeCommune/g' base-officielle-codes-postaux.csv
+sed -i 's/code_postal/codePostal/g' base-officielle-codes-postaux.csv
+sed -i 's/libelle_d_acheminement/libelleAcheminement/g' base-officielle-codes-postaux.csv
+sed -i 's/nom_de_la_commune/nomCommune/g' base-officielle-codes-postaux.csv
+csv2json base-officielle-codes-postaux.csv | jq '[.[] | {"codePostal": .codePostal, "codeCommune": .codeCommune, "libelleAcheminement": .libelleAcheminement, "nomCommune": .nomCommune}]' >| sources/codes-postaux.json
+# To fix missing postal codes
 jq -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | jq --slurp '.' >| sources/codes-postaux-with-fix.json
