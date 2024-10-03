@@ -1,0 +1,27 @@
+publiccodeYmlVersion: "0.2"
+name: Découpage administratif
+url: https://github.com/etalab/decoupage-administratif
+landingURL: ""
+creationDate: 2018-03-29
+latestRelease:
+  date: "2024-01-11"
+  version: "4.0.0"
+logo: https://github.com/etalab.png
+usedBy: []
+fundedBy:
+  - name: Direction interministérielle du numérique (DINUM)
+    url: https://lannuaire.service-public.fr/gouvernement/d1a97841-b4bf-46df-a089-1003e4e266b4
+roadmap: ""
+softwareType: ""
+description:
+  fr:
+    shortDescription: Données concernant le découpage administratif français, au format JSON
+    documentation: "https://github.com/datagouv/decoupage-administratif/blob/master/README.md"
+legal:
+  license: mit
+  authorsFile: ""
+maintenance:
+  type: community
+  contacts:
+    - name: ""
+      email: ""
