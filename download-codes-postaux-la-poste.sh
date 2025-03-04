@@ -19,5 +19,7 @@ echo '"codeCommune","nomCommune","codePostal","libelleAcheminement","ligne_5"' >
 tail -n +2 019HexaSmal.csv >> 019HexaSmal_changed_headers.csv
 sed -i 's/;/,/g' 019HexaSmal_changed_headers.csv
 csv2json 019HexaSmal_changed_headers.csv | jq '[.[] | {"codePostal": .codePostal, "codeCommune": .codeCommune, "libelleAcheminement": .libelleAcheminement, "nomCommune": .nomCommune}]' >| sources/codes-postaux.json
+# Removed duplicated due to ligne_5 removal (unused)
+# jq -c '.[]' sources/codes-postaux.json | sort | uniq | jq --slurp '. | sort_by(.codeCommune, .codePostal)'- >| sources/codes-postaux-with-fix.json
 # To fix missing postal codes
-jq -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | jq --slurp '.' >| sources/codes-postaux-with-fix.json
+q -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | sort | uniq | jq --slurp '. | sort_by(.codeCommune, .codePostal)' - >| sources/codes-postaux-with-fix.json

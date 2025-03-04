@@ -11,6 +11,13 @@ const {extractCommunesCOM, generateDepartementsAndRegionsCOM} = require('./colle
 const {extractDepartements, extractRegions, extractArrondissements, extractCommunes} = require('./cog')
 const {writeData, getSourceFilePath} = require('./util')
 
+const sirenCodesForCommunesNotIncludedInEpci = {
+  '22016': {siren_membre: '212200166'},
+  '29083': {siren_membre: '212900831'},
+  '29155': {siren_membre: '212901557'},
+  '85113': {siren_membre: '218501138'}
+}
+
 async function buildRegions(regions) {
   await writeData('regions', regions)
 }
@@ -24,7 +31,9 @@ async function buildArrondissements(arrondissements) {
 }
 
 async function buildCommunes(regions, departements, arrondissements, population) {
-  const inseeSirenMatching = await extractSirenInsee(getSourceFilePath('banatic_siren_insee.xlsx'))
+  let inseeSirenMatching = await extractSirenInsee(getSourceFilePath('epcicom.xlsx'))
+  delete inseeSirenMatching[undefined]
+  inseeSirenMatching = {...inseeSirenMatching, ...sirenCodesForCommunesNotIncludedInEpci}
   const data = await extractCommunes(
     getSourceFilePath('communes.csv'),
     getSourceFilePath('mouvements-communes.csv'),
@@ -36,7 +45,9 @@ async function buildCommunes(regions, departements, arrondissements, population)
   data.forEach(commune => {
     if (['commune-actuelle', 'arrondissement-municipal'].includes(commune.type)) {
       if (commune.code in inseeSirenMatching) {
-        commune.siren = String(inseeSirenMatching[commune.code].siren)
+        commune.siren = String(inseeSirenMatching[commune.code].siren_membre)
+      } else if (commune.type!== 'arrondissement-municipal') {
+        console.log('No SIREN code matching INSEE commune', commune.code)
       }
 
       const codesPostaux = getCodesPostaux(commune.code)
