@@ -37,6 +37,7 @@ async function extractEPCI(path) {
       }
     })
     .value()
+    .filter(item => item.code !== 'undefined')
 }
 
 module.exports = {extractEPCI}
