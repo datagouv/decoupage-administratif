@@ -22,4 +22,4 @@ csv2json 019HexaSmal_changed_headers.csv | jq '[.[] | {"codePostal": .codePostal
 # Removed duplicated due to ligne_5 removal (unused)
 # jq -c '.[]' sources/codes-postaux.json | sort | uniq | jq --slurp '. | sort_by(.codeCommune, .codePostal)'- >| sources/codes-postaux-with-fix.json
 # To fix missing postal codes
-q -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | sort | uniq | jq --slurp '. | sort_by(.codeCommune, .codePostal)' - >| sources/codes-postaux-with-fix.json
+jq -c '.[]' sources/codes-postaux.json sources/codes-postaux-missing.json | sort | uniq | jq --slurp '. | sort_by(.codeCommune, .codePostal)' - >| sources/codes-postaux-with-fix.json
