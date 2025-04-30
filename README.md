@@ -51,7 +51,7 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 
 | Année | Version du package                        | NPM                                                 | Yarn                                             |
 |-------|-------------------------------------------|-----------------------------------------------------|--------------------------------------------------|
-| 2025  | 5.0.0                                     | `npm install @etalab/decoupage-administratif@5.0.0` | `yarn add @etalab/decoupage-administratif@5.0.0` |
+| 2025  | 5.0.2                                     | `npm install @etalab/decoupage-administratif@5.0.2` | `yarn add @etalab/decoupage-administratif@5.0.2` |
 | 2024  | 4.1.0                                     | `npm install @etalab/decoupage-administratif@4.1.0` | `yarn add @etalab/decoupage-administratif@4.1.0` |
 | 2023  | 3.1.1                                     | `npm install @etalab/decoupage-administratif@3.1.1` | `yarn add @etalab/decoupage-administratif@3.1.1` |
 | 2022  | 2.3.1                                     | `npm install @etalab/decoupage-administratif@2.3.1` | `yarn add @etalab/decoupage-administratif@2.3.1` |
