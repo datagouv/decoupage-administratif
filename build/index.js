@@ -20,6 +20,16 @@ const sirenCodesForCommunesNotIncludedInEpci = {
 }
 /* eslint-enable camelcase */
 
+const fixNamesFor20250108 = {
+  10411: 'Ville-aux-Bois',
+  76484: 'Oissel-sur-Seine',
+  30195: 'Peyrolles-en-Cévennes',
+  27497: 'Rougemontier',
+  58226: 'Saint-Agnan-en-Morvan',
+  31522: 'Salherm',
+  12083: 'Cransac-les-Thermes'
+}
+
 async function buildRegions(regions) {
   await writeData('regions', regions)
 }
@@ -74,6 +84,12 @@ async function buildCommunes(regions, departements, arrondissements, population)
   communesCOM.forEach(commune => data.push(commune))
 
   await writeData('communes', data)
+  data.forEach(data => {
+    if (data.code in fixNamesFor20250108 && data.type === 'commune-actuelle') {
+      data.nom = fixNamesFor20250108[data.code]
+    }
+  })
+  await writeData('communes-2025-01-08', data)
   return data
 }
 
