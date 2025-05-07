@@ -9,7 +9,7 @@ const {getCodesPostaux, computeMLPCodesPostaux} = require('./codes-postaux')
 const {MLP_CODES} = require('./mlp')
 const {extractCommunesCOM, generateDepartementsAndRegionsCOM} = require('./collectivites-outremer')
 const {extractDepartements, extractRegions, extractArrondissements, extractCommunes} = require('./cog')
-const {writeData, getSourceFilePath} = require('./util')
+const {writeData, getSourceFilePath, readCsvFile} = require('./util')
 
 /* eslint-disable camelcase */
 const sirenCodesForCommunesNotIncludedInEpci = {
@@ -129,8 +129,26 @@ async function buildEPT(communes, population) {
 async function main() {
   await remove(join(__dirname, '..', 'data'))
 
+  const mouvementsRows = await readCsvFile(getSourceFilePath('mouvements-communes.csv'))
+  const dates = mouvementsRows.map(mvt => mvt.DATE_EFF).filter((value, index, array) => array.indexOf(value) === index)
+  dates.sort()
+  const lastDate = dates.pop()
+  const previousYear = String(parseInt(lastDate.slice(0, 4), 10) - 1)
+  const comToCom = mouvementsRows.filter(mvt => {
+    return mvt.MOD === '50' && new Date(`${previousYear}-01-01`) < new Date(mvt.DATE_EFF) && mvt.TYPECOM_AV === 'COM' && mvt.TYPECOM_AP === 'COM'
+  }).reduce((acc, curr) => {
+    acc[curr.COM_AP] = curr.COM_AV
+    return acc
+  }, {})
   const populationHorsMayotte = await extractPopulation(getSourceFilePath('donnees_communes.csv'))
   const populationMayotte = await extractPopulation(getSourceFilePath('donnees_communes_mayotte.csv'))
+
+  for (const [key, value] of Object.entries(comToCom)) {
+    if (value in populationHorsMayotte.communes) {
+      populationHorsMayotte.communes[key] = populationHorsMayotte.communes[value]
+    }
+  }
+
   const population = {
     communes: {...populationHorsMayotte.communes, ...populationMayotte.communes}
   }
