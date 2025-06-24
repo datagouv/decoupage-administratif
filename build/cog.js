@@ -167,7 +167,7 @@ async function extractCommunes(communesPath, mouvementsCommunesPath, arrondissem
       commune.departement = row.DEP
       commune.region = row.REG
       commune.type = 'commune-actuelle'
-      commune.rangChefLieu = getRangChefLieu(row.com, chefsLieuxArrondissement, chefsLieuxDepartement, chefsLieuxRegion)
+      commune.rangChefLieu = getRangChefLieu(row.COM, chefsLieuxArrondissement, chefsLieuxDepartement, chefsLieuxRegion)
       commune.anciensCodes = anciensCodesIndex[row.COM]
     }
 
