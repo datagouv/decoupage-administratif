@@ -99,7 +99,8 @@ async function buildEPCI() {
 }
 
 async function buildEPT(communes, population) {
-  const rows = await extractEPT(getSourceFilePath('ept.xlsx'))
+  const rowsUnfiltered = await extractEPT(getSourceFilePath('ept.xlsx'))
+  const rows = rowsUnfiltered.filter(ept => ept.code !== 'ZZZZZZZZZ')
   const inseeCommunesWithEpt = rows.reduce((acc, row) => {
     acc = [...acc, ...row.membres]
     return acc
