@@ -66,7 +66,7 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 * [Liste des EPT (Etablissements Publics Territoriaux)](https://www.insee.fr/fr/information/2510634) avec [l'url exacte du fichier](https://www.insee.fr/fr/statistiques/fichier/2510634/ept_au_01-01-2025.zip) (EPT 2025)
 * [Population légale](https://www.insee.fr/fr/statistiques/8680726?sommaire=8681011) de l'INSEE + [population Mayotte INSEE 2017](https://www.insee.fr/fr/statistiques/3291775?sommaire=2120838) + [population COM](https://www.insee.fr/fr/statistiques/8680702?sommaire=8681011)
 * [Liste des codes postaux](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/) issue des données La Poste. Antérieurement, sous licence ODBL, maintenant en LO
-* Correspondances communes code SIREN et code INSEE faite depuis les codes communes et EPCIs de la source DGCL au lieu de BANATIC antérieurement. On a géré les cas particuliers dans la variable `sirenCodesForCommunesNotIncludedInEpci` du fichier [https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js)[https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js] car toutes les communes ne sont pas dans des EPCIs, en l'occurence quelqu'unes insulaires.
+* Correspondances communes code SIREN et code INSEE faite depuis les codes communes et EPCIs de la source DGCL au lieu de BANATIC antérieurement. Les cas particuliers sont pris en compte dans le code [dans la variable `sirenCodesForCommunesNotIncludedInEpci`](https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js) car toutes les communes ne sont pas dans des EPCIs, en l'occurence quelques unes insulaires.
 
 ## Licence
 
