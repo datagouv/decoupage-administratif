@@ -10,6 +10,6 @@ const filesNames = [
 ]
 
 for (const file of filesNames) {
-  module.exports[file] = JSON.parse(fs.readFileSync(`./data/${file}.json`, "utf8"));
+  module.exports[file] = JSON.parse(fs.readFileSync(`./data/${file}.json`, 'utf8'))
 }
 
