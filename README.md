@@ -51,6 +51,7 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 
 | Année | Version du package                        | NPM                                                 | Yarn                                             |
 |-------|-------------------------------------------|-----------------------------------------------------|--------------------------------------------------|
+| 2026  | 6.0.0                                     | `npm install @etalab/decoupage-administratif@6.0.0` | `yarn add @etalab/decoupage-administratif@6.0.0` |
 | 2025  | 5.3.0                                     | `npm install @etalab/decoupage-administratif@5.3.0` | `yarn add @etalab/decoupage-administratif@5.3.0` |
 | 2024  | 4.1.0                                     | `npm install @etalab/decoupage-administratif@4.1.0` | `yarn add @etalab/decoupage-administratif@4.1.0` |
 | 2023  | 3.1.1                                     | `npm install @etalab/decoupage-administratif@3.1.1` | `yarn add @etalab/decoupage-administratif@3.1.1` |
@@ -62,11 +63,11 @@ Vous avez besoin de données selon une année? Voici un tableau récapitulatif p
 ## Sources
 
 * [Code Officiel Géographique](https://insee.fr/fr/information/2560452) de l'INSEE
-* [Liste des EPCI à fiscalité propre](https://www.collectivites-locales.gouv.fr/institutions/liste-et-composition-des-epci-fiscalite-propre) de la DGCL ([url exacte](https://www.collectivites-locales.gouv.fr/files/Accueil/DESL/2025/epcicom2025-2.xlsx))
+* [Liste des EPCI à fiscalité propre](https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/acces-aux-statistiques-par-thematique/perimetre-des-intercommunalites/liste-et-composition-des-epci-fiscalite-propre) de la DGCL ([url exacte](https://www.collectivites-locales.gouv.fr/files/files/Etudes-et-statistiques/DESL/2026/EPCI/epcicom2026.xlsx))
 * [Liste des EPT (Etablissements Publics Territoriaux)](https://www.insee.fr/fr/information/2510634) avec [l'url exacte du fichier](https://www.insee.fr/fr/statistiques/fichier/2510634/ept_au_01-01-2025.zip) (EPT 2025)
 * [Population légale](https://www.insee.fr/fr/statistiques/8680726?sommaire=8681011) de l'INSEE + [population Mayotte INSEE 2017](https://www.insee.fr/fr/statistiques/3291775?sommaire=2120838) + [population COM](https://www.insee.fr/fr/statistiques/8680702?sommaire=8681011)
 * [Liste des codes postaux](https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/) issue des données La Poste. Antérieurement, sous licence ODBL, maintenant en LO
-* Correspondances communes code SIREN et code INSEE faite depuis les codes communes et EPCIs de la source DGCL au lieu de BANATIC antérieurement. On a géré les cas particuliers dans la variable `sirenCodesForCommunesNotIncludedInEpci` du fichier [https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js)[https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js] car toutes les communes ne sont pas dans des EPCIs, en l'occurence quelqu'unes insulaires.
+* Correspondances communes code SIREN et code INSEE faite depuis les codes communes et EPCIs de la source DGCL au lieu de BANATIC antérieurement. On a géré les cas particuliers dans la variable `sirenCodesForCommunesNotIncludedInEpci` du fichier [https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js](https://github.com/datagouv/decoupage-administratif/blob/master/build/index.js) car toutes les communes ne sont pas dans des EPCIs, en l'occurence quelqu'unes insulaires.
 
 ## Licence
 
