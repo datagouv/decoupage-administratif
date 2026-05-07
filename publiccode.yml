@@ -1,27 +1,40 @@
-publiccodeYmlVersion: "0.2"
-name: Découpage administratif
-url: https://github.com/etalab/decoupage-administratif
-landingURL: ""
-creationDate: 2018-03-29
-latestRelease:
-  date: "2024-01-11"
-  version: "4.0.0"
-logo: https://github.com/etalab.png
-usedBy: []
+publiccodeYmlVersion: "0"
+name: "Découpage administratif"
+url: "https://github.com/datagouv/decoupage-administratif"
+softwareVersion: "6.0.0"
+releaseDate: "2024-01-11"
+logo: "https://github.com/etalab.png"
+platforms:
+  - web
+softwareType: "library"
+developmentStatus: "stable"
 fundedBy:
-  - name: Direction interministérielle du numérique (DINUM)
-    url: https://lannuaire.service-public.fr/gouvernement/d1a97841-b4bf-46df-a089-1003e4e266b4
-roadmap: ""
-softwareType: ""
+  - name: "Direction interministérielle du numérique (DINUM)"
+    uri: "https://lannuaire.service-public.fr/gouvernement/d1a97841-b4bf-46df-a089-1003e4e266b4"
 description:
   fr:
-    shortDescription: Données concernant le découpage administratif français, au format JSON
+    shortDescription: "Données concernant le découpage administratif français, au format JSON"
+    longDescription: >
+      Découpage administratif fournit les données de référence du découpage
+      territorial français au format JSON : communes, arrondissements,
+      départements, régions, EPCI à fiscalité propre et EPT (Établissements
+      Publics Territoriaux). Les données sont mises à jour chaque année et
+      versionnées par millésime, ce qui permet d'utiliser les données d'une
+      année précise. Le paquet est disponible sur npm et les fichiers JSON
+      sont également accessibles directement via unpkg.
     documentation: "https://github.com/datagouv/decoupage-administratif/blob/master/README.md"
+    features:
+      - "Communes, arrondissements, départements et régions"
+      - "EPCI à fiscalité propre et EPT"
+      - "Données millésimées versionnées par année"
+      - "Disponible sur npm et via unpkg"
 legal:
-  license: mit
-  authorsFile: ""
+  license: "MIT"
 maintenance:
-  type: community
+  type: "community"
   contacts:
-    - name: ""
-      email: ""
+    - name: "Etalab / DINUM"
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - fr
